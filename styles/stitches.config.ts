@@ -1,4 +1,5 @@
 import { createStitches } from "@stitches/react"
+import { FOOTER_HEIGHT, MAX_WIDTH, NAV_HEIGHT } from "./constants"
 
 export const { styled, css, globalCss } = createStitches({
 	theme: {
@@ -81,6 +82,12 @@ export const globalStyles = globalCss({
 	body: {
 		backgroundColor: "$black",
 	},
+
+  main: {
+    paddingTop: NAV_HEIGHT,
+    paddingBottom: FOOTER_HEIGHT,
+    width: MAX_WIDTH,
+  },
 
 	"h1, h2, h3, h4": {
 		fontFamily: "$heading",
