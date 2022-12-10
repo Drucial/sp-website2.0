@@ -1,8 +1,9 @@
 import { styled } from "@stitches/react"
+import { PrimaryButton, AccentButton, NeutralButton } from "../styles/commonStyles"
 import Head from "next/head"
 import Link from "next/link"
 
-export default function Home() {
+export default function Styles() {
 	return (
 		<div>
 			<Head>
@@ -36,6 +37,9 @@ export default function Home() {
         <Dark/>
         <Light2/>
         <Light/>
+				<PrimaryButton>Click Here</PrimaryButton>
+				<AccentButton>Click Here</AccentButton>
+				<NeutralButton>Click Here</NeutralButton>
 			</main>
 		</div>
 	)
