@@ -1,7 +1,9 @@
 import { styled } from "@stitches/react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { GradientSpan } from "../styles/commonStyles";
+import { DevLove } from "../src/components/DevLove";
 
 export default function Home() {
   return (
@@ -19,7 +21,21 @@ export default function Home() {
         <Subtitle>Stash now. Recover later. Enjoy the process.</Subtitle>
       </TitleSection>
 
-      <HeroSection />
+      <HeroSection>
+        <Image
+          src="/img/home/macbook2.png"
+          alt="Stashpad for Mac OS"
+          width={1300}
+          height={933}
+          style={{
+            display: "block",
+            height: "50vw",
+            width: "auto",
+            margin: "0 auto",
+          }}
+        />
+      </HeroSection>
+      <DevLove />
     </>
   );
 }
@@ -34,52 +50,39 @@ const Title = styled("h1", {
   fontSize: "96px",
   fontWeight: "$500",
   lineHeight: 1,
-  textAlign: 'center',
+  textAlign: "center",
 });
 
 const Subtitle = styled("h2", {
   fontWeight: "$200",
   textAlign: "center",
-  marginTop: '$l',
+  marginTop: "$l",
 });
 
 const HeroSection = styled("section", {
-  maxWidth: '1000px',
-  height: '80vw',
-  maxHeight: "700px",
-  backgroundImage: "url(/img/home/macbook2.png)",
-  backgroundSize: "130%",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "center center",
   position: "relative",
   "&::after": {
     content: "",
     position: "absolute",
-    width: '30vw',
-    height: '15vw',
-    right: 200,
-    top: 200,
+    width: "15vw",
+    height: "15vw",
+    right: '25%',
+    top: '20%',
     zIndex: -1,
     borderRadius: 150,
     boxShadow: "$bigPrimary",
     opacity: 0.5,
-    '@bp1': {
-      display: 'none',
-    },
   },
   "&::before": {
     content: "",
     position: "absolute",
-    width: '20vw',
-    height: '10vw',
-    left: 200,
-    top: 300,
+    width: "10vw",
+    height: "10vw",
+    left: '30%',
+    bottom: '40%',
     zIndex: -1,
     borderRadius: 150,
     boxShadow: "$bigPrimary200",
     opacity: 0.5,
-    '@bp1': {
-      display: 'none',
-    },
   },
 });

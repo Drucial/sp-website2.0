@@ -9,19 +9,20 @@ type ipProps = {
 
 export const SocialLinks = ({ width, fill, opacity }: ipProps) => {
   const Icon = styled("svg", {
+    display: "block",
     color: fill,
-    marginRight: "$l",
+    marginLeft: "$l",
     opacity: opacity,
     transition: "$short",
     cursor: "pointer",
     "&:hover": {
       opacity: 1,
-      color: '$primary100'
+      color: "$primary100",
     },
   });
   return (
     <Wrapper>
-      <Link href="https://twitter.com/stashpadapp">
+      <Link href="https://twitter.com/stashpadapp" target="_blank">
         <Icon
           width={width}
           height={width}
@@ -33,7 +34,20 @@ export const SocialLinks = ({ width, fill, opacity }: ipProps) => {
         </Icon>
       </Link>
 
-      <Link href="https://www.linkedin.com/company/stashpad/">
+      <Link href="https://www.youtube.com/@stashpad7982" target="_blank">
+        <Icon
+          width={width}
+          height={width}
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M22.68,1.32c-.88-.88-1.94-1.32-3.18-1.32H4.5C3.26,0,2.2,.44,1.32,1.32S0,3.26,0,4.5v15c0,1.24,.44,2.3,1.32,3.18s1.94,1.32,3.18,1.32h15c1.24,0,2.3-.44,3.18-1.32s1.32-1.94,1.32-3.18V4.5c0-1.24-.44-2.3-1.32-3.18Zm-1.63,15.26c-.22,.82-.86,1.46-1.67,1.68-1.47,.4-7.38,.4-7.38,.4,0,0-5.91,0-7.38-.4-.81-.22-1.45-.86-1.67-1.68-.4-1.48-.4-4.58-.4-4.58,0,0,0-3.09,.4-4.58,.22-.82,.86-1.46,1.67-1.68,1.47-.4,7.38-.4,7.38-.4,0,0,5.91,0,7.38,.4,.81,.22,1.45,.86,1.67,1.68,.4,1.48,.4,4.58,.4,4.58,0,0,0,3.1-.4,4.58Z" />
+          <polygon points="10.07 14.81 15.01 12 10.07 9.19 10.07 14.81" />
+        </Icon>
+      </Link>
+
+      <Link href="https://www.linkedin.com/company/stashpad/" target="_blank">
         <Icon
           width={width}
           height={width}
@@ -45,7 +59,7 @@ export const SocialLinks = ({ width, fill, opacity }: ipProps) => {
         </Icon>
       </Link>
 
-      <Link href="https://discord.gg/ScxPxcN9fK">
+      <Link href="https://discord.gg/ScxPxcN9fK" target="_blank">
         <Icon
           width={width}
           height={width}
