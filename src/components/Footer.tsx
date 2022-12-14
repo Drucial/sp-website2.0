@@ -28,7 +28,9 @@ const MainFooter = styled("footer", {
 const FooterWrapper = styled('div', {
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "center",
+  alignItems: "flex-end",
   width: "100%",
   maxWidth: MAX_WIDTH,
+  margin: '0 $l',
+  paddingBottom: '$l',
 })

@@ -8,20 +8,20 @@ export const NavBar = () => {
   return (
     <MainHeader>
       <NavWrapper>
-        <SpLogo height={50}></SpLogo>
+        <Link href="/"><SpLogo height={50}></SpLogo></Link>
         <MainNav>
           <NavList>
             <NavItem>
               <Link href="">Docs</Link>
             </NavItem>
             <NavItem>
-              <Link href="">Blog</Link>
+              <Link href="/blog">Blog</Link>
             </NavItem>
             <NavItem>
-              <Link href="">Team</Link>
+              <Link href="/about">Team</Link>
             </NavItem>
             <NavItem>
-              <Link href="">Pricing</Link>
+              <Link href="/pricing">Pricing</Link>
             </NavItem>
           </NavList>
           <LoginWrapper>
@@ -50,6 +50,7 @@ const NavWrapper = styled("div", {
   alignItems: "center",
   width: "100%",
   maxWidth: MAX_WIDTH,
+  margin: '0 $l',
 });
 
 const MainNav = styled("nav", {
