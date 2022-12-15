@@ -23,7 +23,6 @@ export const DevLove = () => {
 
 const Section = styled("section", {
   padding: "$xxl 0",
-  width: "100vw",
 });
 
 const Title = styled("h2", {

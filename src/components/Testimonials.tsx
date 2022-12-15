@@ -1,7 +1,6 @@
 import { styled } from "@stitches/react";
 import { testimonials } from "../data/data";
 import Image from "next/image";
-import { relative } from "node:path/win32";
 
 interface ICardProps {
   name: string;
@@ -30,20 +29,27 @@ const CardWrapper = styled("div", {
   flexDirection: "column",
   alignItems: "center",
   position: "relative",
-  width: 200,
   background: "$glassGradientMiddle",
-  margin: "$l",
   color: "$light100",
-  padding: "$l $l $xxl",
+  padding: "$l $xxl $xxl",
+  margin: '0 auto',
   borderRadius: 4,
-  backdropFilter: 'blur(4px)'
+  backdropFilter: "blur(4px)",
+  transition: "250ms ease-in",
+
+  transform: "scale(.9)",
+
+  "&:hover": {
+    transform: "scale(1)",
+  },
 });
+
 const Role = styled("div", {
-  height: 40,
   textAlign: "center",
   margin: "$l 0",
   fontWeight: "$400",
 });
+
 const Name = styled("div", {
   position: "absolute",
   padding: "$m $l",
@@ -56,27 +62,31 @@ const Name = styled("div", {
   bottom: -20,
   boxShadow: "0px 0px 20px rgba(0,0,0,.5)",
 });
+
 const Quote = styled("p", {
   fontWeight: "$200",
 });
 
 export const Testimonials = () => {
   return (
-    <FullWidthWrapper>
-      {testimonials.map((item, index) => (
-        <Card
-          name={item.name}
-          role={item.role}
-          photo={item.photo}
-          quote={item.quote}
-          key={index}
-        />
-      ))}
-    </FullWidthWrapper>
+    <GridWrapper>
+        {testimonials.map((item, index) => (
+          <Card
+            name={item.name}
+            role={item.role}
+            photo={item.photo}
+            quote={item.quote}
+            key={index}
+          />
+        ))}
+    </GridWrapper>
   );
 };
 
-const FullWidthWrapper = styled("div", {
-  display: "flex",
-  margin: "$xl 0",
+const GridWrapper = styled("div", {
+  display: 'grid',
+  justifyContent: 'center',
+  gap: '$l',
+  gridTemplateColumns: 'repeat(auto-fit,400px)',
+  margin: '$xl auto'
 });
