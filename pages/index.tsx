@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GradientSpan } from "../styles/commonStyles";
 import { DevLove } from "../src/components/DevLove";
+import { Features } from "../src/components/Features";
 
 export default function Home() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
         />
       </HeroSection>
       <DevLove />
+      <Features />
     </>
   );
 }

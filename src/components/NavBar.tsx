@@ -23,6 +23,9 @@ export const NavBar = () => {
             <NavItem>
               <Link href="/pricing">Pricing</Link>
             </NavItem>
+            <NavItem>
+              <Link href="/download">Download</Link>
+            </NavItem>
           </NavList>
           <LoginWrapper>
             <LoginIcon />

@@ -57,7 +57,7 @@ const SubscribeWrapper = styled("div", {
   alignItems: 'center',
   justifyContent: 'center',
   opacity: .5,
-  background: '$light100',
+  background: '$light200',
   borderRadius: '4px',
   color: "$black",
   "&:hover": {

@@ -22,7 +22,8 @@ export const DevLove = () => {
 };
 
 const Section = styled("section", {
-  padding: "$xxl 0",
+  padding: "$xxl $l",
+  marginTop: '$xxxl'
 });
 
 const Title = styled("h2", {

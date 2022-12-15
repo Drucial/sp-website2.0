@@ -46,6 +46,7 @@ const CardWrapper = styled("div", {
 
 const Role = styled("div", {
   textAlign: "center",
+  fontSize: '$medium',
   margin: "$l 0",
   fontWeight: "$400",
 });
@@ -56,6 +57,7 @@ const Name = styled("div", {
   background: "$primaryGradient",
   width: "80%",
   textAlign: "center",
+  fontSize: '$medium',
   color: "$light100",
   fontWeight: "$400",
   borderRadius: 4,

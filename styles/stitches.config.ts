@@ -7,7 +7,7 @@ export const { styled, css, globalCss, theme } = createStitches({
       black: "hsl(0,0%,1%)",
       dark100: "hsl(0,0%,10%)",
       dark200: "hsl(0, 0%, 18%)",
-      light100: "hsl(0,0%,95%)",
+      light100: "hsl(0,0%,85%)",
       light200: "hsl(0,0%,100%)",
       primary100: "hsl(249, 64%, 56%)",
       primary200: "hsl(249, 96%, 57%)",
@@ -34,6 +34,7 @@ export const { styled, css, globalCss, theme } = createStitches({
       l: "16px",
       xl: "24px",
       xxl: "32px",
+      xxxl: "64px",
     },
     fontSizes: {
       smallest: "12px",
