@@ -96,9 +96,9 @@ const NavItem = styled("li", {
 
   "&:hover": {
     "& ul": {
-      height: 'max-content',
+      height: "max-content",
       maxHeight: 200,
-    }
+    },
   },
 });
 
@@ -109,10 +109,17 @@ const NavItemList = styled("ul", {
   width: "max-content",
   height: 0,
   maxHeight: 0,
-  overflow: 'hidden',
-  transition: '$long',
+  overflow: "hidden",
+  transition: "$long",
   "& li": {
     marginTop: "$m",
+  },
+  "& a": {
+    display: "flex",
+    alignItems: "center",
+  },
+  "& svg": {
+    marginRight: "$s",
   },
 });
 
