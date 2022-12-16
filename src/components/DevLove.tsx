@@ -8,8 +8,8 @@ import { Testimonials } from "./Testimonials";
 
 export const DevLove = () => {
   return (
-    <>
-      <Section>
+    <Section>
+      <LovedWrapper>
         <Title>Loved by engineers at</Title>
         <MooseHeadsWrapper>
           <TwilioLogo />
@@ -17,15 +17,20 @@ export const DevLove = () => {
           <CloudinaryLogo />
           <LoomLogo />
         </MooseHeadsWrapper>
-      </Section>
+      </LovedWrapper>
       <Testimonials />
-    </>
+    </Section>
   );
 };
 
 const Section = styled("section", {
-  // padding: "$xxl 0",
-  // margin: '$xxxl 0'
+  padding: "$xxl 0",
+  margin: "$xxxl 0",
+  maxWidth: '100%',
+});
+
+const LovedWrapper = styled("div", {
+  padding: '0 $l'
 });
 
 const Title = styled("h2", {

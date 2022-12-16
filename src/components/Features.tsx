@@ -4,7 +4,6 @@ import { Code } from "../svg/Code";
 import { Capture } from "../svg/Capture";
 import { RocketShip } from "../svg/Rocketship";
 import { NarrowApp } from "../svg/NarrowApp";
-import { relative } from "node:path/win32";
 
 export const Features = () => {
   return (
