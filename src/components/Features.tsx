@@ -1,53 +1,62 @@
 import { styled } from "@stitches/react";
 import { theme } from "../../styles/stitches.config";
 import { Code } from "../svg/Code";
-import { Markdown } from "../svg/Markdown";
+import { Capture } from "../svg/Capture";
 import { RocketShip } from "../svg/Rocketship";
+import { NarrowApp } from "../svg/NarrowApp";
+import { relative } from "node:path/win32";
 
 export const Features = () => {
   return (
     <Section>
       <ShadowBox>
         <Title>Engineered to perfection</Title>
-        <CardWrapper>
-          <Icon>
-            <RocketShip height={120} />
-          </Icon>
-          <CardContent>
-            <h3>Ridiculously Fast Notes</h3>
-            <ul>
-              <li>Dedicated focus command</li>
-              <li>Sub 100ms actions</li>
-              <li>Sticky tiny mode</li>
-            </ul>
-          </CardContent>
-        </CardWrapper>
-        <CardWrapper css={{ justifySelf: 'end'}}>
-          <CardContent>
-            <h3>Capture comes first</h3>
-            <ul style={{ textAlign: "right" }}>
-              <li>Familiar markdown flavor</li>
-              <li>Code syntax highlighting</li>
-              <li>Default writing location</li>
-            </ul>
-          </CardContent>
-          <Icon>
-            <Markdown height={120} />
-          </Icon>
-        </CardWrapper>
-        <CardWrapper>
-          <Icon>
-            <Code height={120} />
-          </Icon>
-          <CardContent>
-            <h3>Totally customizable</h3>
-            <ul>
-              <li>Custom Keybindings</li>
-              <li>Color theme</li>
-              <li>API coming soon</li>
-            </ul>
-          </CardContent>
-        </CardWrapper>
+        <LeftSide>
+          <CardWrapper>
+            <Icon>
+              <RocketShip height={96} />
+            </Icon>
+            <CardContent>
+              <h3>Ridiculously Fast Notes</h3>
+              <ul>
+                <li>Dedicated focus command</li>
+                <li>Sub 100ms actions</li>
+                <li>Sticky tiny mode</li>
+              </ul>
+            </CardContent>
+          </CardWrapper>
+          <CardWrapper >
+            <Icon>
+              <Capture height={96} />
+            </Icon>
+            <CardContent>
+              <h3>Capture comes first</h3>
+              <ul>
+                <li>Familiar markdown flavor</li>
+                <li>Code syntax highlighting</li>
+                <li>Default writing location</li>
+              </ul>
+            </CardContent>
+          </CardWrapper>
+          <CardWrapper >
+            <Icon>
+              <Code height={96} />
+            </Icon>
+            <CardContent>
+              <h3>Totally customizable</h3>
+              <ul>
+                <li>Custom Keybindings</li>
+                <li>Color theme</li>
+                <li>API coming soon</li>
+              </ul>
+            </CardContent>
+          </CardWrapper>
+        </LeftSide>
+        <RightSide>
+          <AppWrapper>
+            <NarrowApp height={500}/>
+          </AppWrapper>
+        </RightSide>
       </ShadowBox>
     </Section>
   );
@@ -55,14 +64,16 @@ export const Features = () => {
 
 const Section = styled("section", {
   padding: "$xxl $l",
-  marginTop: '$xxxl',
+  marginTop: "$xxxl",
 });
 
 const ShadowBox = styled("div", {
-  display: 'grid',
-  width: "100%",
-  maxWidth: 800,
-  padding: "$xxl",
+  display: "grid",
+  gridTemplateColumns: 'auto auto',
+  gap: '$xl',
+  justifyContent: "space-between",
+  maxWidth: 1000,
+  padding: "$xxl $xxxl",
   margin: "0 auto",
   borderRadius: "$radL",
   position: "relative",
@@ -89,6 +100,7 @@ const ShadowBox = styled("div", {
     boxShadow: `0px 0px 100px ${theme.colors.primary100}`,
     opacity: 0.3,
   },
+
 });
 
 const Title = styled("h2", {
@@ -109,6 +121,8 @@ const Title = styled("h2", {
   },
 });
 
+const LeftSide = styled('div',{})
+
 const CardWrapper = styled("div", {
   display: "flex",
   alignItems: "center",
@@ -122,12 +136,12 @@ const CardContent = styled("div", {
   padding: "$l",
 
   "& h3": {
-    fontWeight: '$300'
+    fontWeight: "$300",
   },
 
   "& ul": {
     fontSize: "$medium",
-    fontWeight: '$200',
+    fontWeight: "$200",
     color: "$light100",
     margin: "$s 0",
   },
@@ -136,3 +150,26 @@ const CardContent = styled("div", {
     marginTop: "$s",
   },
 });
+
+const RightSide = styled('div',{
+  padding: '$l'
+})
+
+const AppWrapper = styled('div', {
+  position: 'relative',
+  zIndex: 1,
+
+  '&::before' : {
+    content: "",
+    position: "absolute",
+    top: 1,
+    bottom: 1,
+    left: 1,
+    right: 1,
+    borderRadius: 10,
+    background: '$primaryGradient',
+    boxShadow: `0px 0px 50px ${theme.colors.primary200}`,
+    opacity:.15,
+    zIndex: -1,
+  },
+})

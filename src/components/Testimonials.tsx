@@ -25,9 +25,12 @@ const Card = ({ name, role, photo, quote }: ICardProps) => (
 );
 
 const CardWrapper = styled("div", {
+  flexShrink: 0,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  width: 350,
+  height: 300,
   position: "relative",
   background: "$glassGradientMiddle",
   color: "$light100",
@@ -71,7 +74,7 @@ const Quote = styled("p", {
 
 export const Testimonials = () => {
   return (
-    <GridWrapper>
+    <Carousel>
         {testimonials.map((item, index) => (
           <Card
             name={item.name}
@@ -81,14 +84,23 @@ export const Testimonials = () => {
             key={index}
           />
         ))}
-    </GridWrapper>
+    </Carousel>
   );
 };
 
-const GridWrapper = styled("div", {
-  display: 'grid',
+const Carousel = styled("div", {
+  display: 'flex',
   justifyContent: 'center',
+  width: '100vw',
+  height: 320,
+  MsOverflowStyle: 'none',
+  scrollbarWidth: 'none',
+  scrollSnapType: 'x mandatory',
+  overflowX: 'scroll',
   gap: '$l',
-  gridTemplateColumns: 'repeat(auto-fit,400px)',
-  margin: '$xl auto'
+  margin: '$xl 0',
+
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  }
 });

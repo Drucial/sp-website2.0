@@ -1,23 +1,30 @@
+import { LinuxIcon } from "../svg/LinuxIcon";
+import { WindowsIcon } from "../svg/WindowsIcon";
+import { AppleIcon } from "./../svg/AppleIcon";
 export const downloadLinks = [
   {
     os: "Mac",
     version: "M1",
-    links: "https://releases.stashpad.com/download/mac_arm64",
+    link: "https://releases.stashpad.com/download/mac_arm64",
+    icon: AppleIcon,
   },
   {
     os: "Mac",
     version: "Intel",
-    links: "https://releases.stashpad.com/download/mac",
+    link: "https://releases.stashpad.com/download/mac",
+    icon: AppleIcon,
   },
   {
     os: "Win",
     version: "",
-    links: "https://releases.stashpad.com/download/win",
+    link: "https://releases.stashpad.com/download/win",
+    icon: WindowsIcon,
   },
   {
     os: "Linux",
     version: "",
-    links: "https://releases.stashpad.com/download/appimage",
+    link: "https://releases.stashpad.com/download/appimage",
+    icon: LinuxIcon,
   },
 ];
 

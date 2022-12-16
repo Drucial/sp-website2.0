@@ -43,6 +43,7 @@ export default function Home() {
 }
 
 const TitleSection = styled("section", {
+  marginTop: '$xl',
   display: "flex",
   flexDirection: "column",
   alignItems: "center",

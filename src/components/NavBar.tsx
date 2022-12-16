@@ -1,6 +1,8 @@
 import { styled } from "@stitches/react";
 import Link from "next/link";
+import { relative } from "node:path/win32";
 import { MAX_WIDTH, NAV_HEIGHT } from "../../styles/constants";
+import { downloadLinks } from "../data/data";
 import { LoginIcon } from "../icons/LoginIcon";
 import { SpLogo } from "../svg/SpLogo";
 
@@ -8,7 +10,9 @@ export const NavBar = () => {
   return (
     <MainHeader>
       <NavWrapper>
-        <Link href="/"><SpLogo height={50}></SpLogo></Link>
+        <Link href="/">
+          <SpLogo height={50}></SpLogo>
+        </Link>
         <MainNav>
           <NavList>
             <NavItem>
@@ -25,6 +29,18 @@ export const NavBar = () => {
             </NavItem>
             <NavItem>
               <Link href="/download">Download</Link>
+              <NavItemList>
+                {downloadLinks.map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <li key={i}>
+                      <Link href={item.link}>
+                        <Icon /> {item.version} {item.os}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </NavItemList>
             </NavItem>
           </NavList>
           <LoginWrapper>
@@ -43,6 +59,7 @@ const MainHeader = styled("header", {
   justifyContent: "center",
   width: "100%",
   height: NAV_HEIGHT,
+  // background: '$black',
   backdropFilter: "blur(8px)",
   zIndex: 10,
 });
@@ -53,7 +70,7 @@ const NavWrapper = styled("div", {
   alignItems: "center",
   width: "100%",
   maxWidth: MAX_WIDTH,
-  margin: '0 $l',
+  margin: "0 $l",
 });
 
 const MainNav = styled("nav", {
@@ -68,14 +85,34 @@ const NavList = styled("ul", {
 });
 
 const NavItem = styled("li", {
+  position: "relative",
   marginLeft: "$xl",
   "& a": {
     color: "$light100",
-  },
-  "&:hover": {
-    "& a": {
+    "&:hover": {
       color: "$primary100",
     },
+  },
+
+  "&:hover": {
+    "& ul": {
+      height: 'max-content',
+      maxHeight: 200,
+    }
+  },
+});
+
+const NavItemList = styled("ul", {
+  position: "absolute",
+  top: "100%",
+  left: 0,
+  width: "max-content",
+  height: 0,
+  maxHeight: 0,
+  overflow: 'hidden',
+  transition: '$long',
+  "& li": {
+    marginTop: "$m",
   },
 });
 

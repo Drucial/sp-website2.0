@@ -8,22 +8,24 @@ import { Testimonials } from "./Testimonials";
 
 export const DevLove = () => {
   return (
-    <Section>
-      <Title>Loved by engineers at</Title>
-      <MooseHeadsWrapper>
-        <TwilioLogo />
-        <AlgoliaLogo />
-        <CloudinaryLogo />
-        <LoomLogo />
-      </MooseHeadsWrapper>
+    <>
+      <Section>
+        <Title>Loved by engineers at</Title>
+        <MooseHeadsWrapper>
+          <TwilioLogo />
+          <AlgoliaLogo />
+          <CloudinaryLogo />
+          <LoomLogo />
+        </MooseHeadsWrapper>
+      </Section>
       <Testimonials />
-    </Section>
+    </>
   );
 };
 
 const Section = styled("section", {
-  padding: "$xxl $l",
-  marginTop: '$xxxl'
+  // padding: "$xxl 0",
+  // margin: '$xxxl 0'
 });
 
 const Title = styled("h2", {
