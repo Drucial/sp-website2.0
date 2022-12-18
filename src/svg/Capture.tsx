@@ -11,7 +11,7 @@ export const Capture = ({ height }: IProps) => {
       xmlns="http://www.w3.org/2000/svg"
       width={15}
       height={15}
-      style={{ height: height }}
+      style={{ height: height, stroke: '$black', strokeWidth: 1 }}
       fill="none"
     >
       <path

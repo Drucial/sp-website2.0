@@ -1,13 +1,30 @@
 import { NavBar } from "./NavBar";
 import { Footer } from "./Footer";
 import { useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { MOBILE_WIDTH } from "../../styles/constants";
+import { useSetRecoilState } from "recoil";
+import { IsMobileState } from "../../state/atoms";
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 
 export default function Layout({ children }: LayoutProps) {
+  const setIsMobile = useSetRecoilState(IsMobileState);
+  const updateIsMobile = () => {
+    window.innerWidth <= MOBILE_WIDTH ? setIsMobile(true) : setIsMobile(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateIsMobile);
+    return () => {
+      window.removeEventListener("resize", updateIsMobile);
+    };
+  });
+
+  useEffect(() => {
+    updateIsMobile();
+  });
   const setViewportHeight = () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
@@ -21,24 +38,10 @@ export default function Layout({ children }: LayoutProps) {
     };
   });
 
-  const variants = {
-    hidden: { opacity: 0, x: '100%', y: 0 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: '-100%', y: 0},
-  };
-
   return (
     <div className="app">
       <NavBar />
-        <motion.main
-          variants={variants} // Pass the variant object into Framer Motion
-          initial="hidden" // Set the initial state to variants.hidden
-          animate="enter" // Animated state to variants.enter
-          exit="exit" // Exit state (used later) to variants.exit
-          transition={{ type: "linear" }}
-        >
-          {children}
-        </motion.main>
+      <main>{children}</main>
       <Footer />
     </div>
   );

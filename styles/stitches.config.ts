@@ -1,5 +1,5 @@
 import { createStitches } from "@stitches/react";
-import { FOOTER_HEIGHT, MAX_WIDTH, NAV_HEIGHT } from "./constants";
+import { FOOTER_HEIGHT, MAX_WIDTH, NAV_HEIGHT, MOBILE_WIDTH } from "./constants";
 
 export const { styled, css, globalCss, theme } = createStitches({
   theme: {
@@ -67,17 +67,18 @@ export const { styled, css, globalCss, theme } = createStitches({
       radF: "999px",
     },
     shadows: {
-      bigPrimary: "0 0 300px 200px hsl(249, 64%, 56%)",
-      bigPrimary200: "0 0 300px 200px hsl(249, 96%, 57%)",
+      bigPrimary: "0 0 20vw 15vw hsl(249, 64%, 56%)",
+      bigPrimary200: "0 0 20vw 15vw hsl(249, 96%, 57%)",
     },
     zIndices: {},
     transitions: {
       short: "150ms ease-in",
+      medium: "250ms ease-in-out",
       long: "350ms ease-in",
     },
   },
   media: {
-    bp1: "(max-width: 640px)",
+    bp1: `(max-width: ${MOBILE_WIDTH})`,
     bp2: "(max-width: 768px)",
     bp3: "(max-width: 1024px)",
   },

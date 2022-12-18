@@ -45,7 +45,7 @@ export const testimonials = [
   },
   {
     name: "Jacqui",
-    role: "Software Engineer at Atlassian",
+    role: "Engineer at Atlassian",
     photo: "/img/testimonials/jacqui.jpg",
     quote:
       "I no longer think twice about how or where to jot down quick notes. Stashpad is fast, easy to use, and brings just enough order to organic thoughts and ideas.",

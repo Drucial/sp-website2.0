@@ -13,6 +13,8 @@ export const Code = ({ height }: IProps) => {
       height={80}
       style={{ height: height }}
       fill="none"
+      stroke="black"
+      strokeWidth={2}
     >
       <path
         fill-rule="evenodd"

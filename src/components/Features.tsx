@@ -166,7 +166,7 @@ const AppWrapper = styled('div', {
     left: 1,
     right: 1,
     borderRadius: 10,
-    background: '$primaryGradient',
+    // background: '$primaryGradient',
     boxShadow: `0px 0px 50px ${theme.colors.primary200}`,
     opacity:.15,
     zIndex: -1,

@@ -1,6 +1,5 @@
 import { styled } from "@stitches/react";
 import Head from "next/head";
-import Link from "next/link";
 import Image from "next/image";
 import { GradientSpan } from "../styles/commonStyles";
 import { DevLove } from "../src/components/DevLove";
@@ -30,7 +29,7 @@ export default function Home() {
           height={933}
           style={{
             display: "block",
-            height: "50vw",
+            height: "clamp(200px, 50vw, 820px)",
             width: "auto",
             margin: "0 auto",
           }}
@@ -43,21 +42,23 @@ export default function Home() {
 }
 
 const TitleSection = styled("section", {
-  marginTop: '$xl',
+  marginTop: '$xxxl',
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
 });
 
 const Title = styled("h1", {
-  fontSize: "96px",
+  fontSize: "clamp($h1, 10vw, 96px)",
   fontWeight: "$500",
   lineHeight: 1,
   textAlign: "center",
 });
 
 const Subtitle = styled("h2", {
+  fontSize: "clamp(16px, 5vw, $h2)",
   fontWeight: "$200",
+  lineHeight: 1.2,
   textAlign: "center",
   marginTop: "$l",
 });

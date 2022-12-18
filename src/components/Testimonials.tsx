@@ -1,6 +1,7 @@
 import { styled } from "@stitches/react";
 import { testimonials } from "../data/data";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 interface ICardProps {
   name: string;
@@ -8,6 +9,8 @@ interface ICardProps {
   photo: string;
   quote: string;
 }
+
+const CARD_WIDTH = 350;
 
 const Card = ({ name, role, photo, quote }: ICardProps) => (
   <CardWrapper>
@@ -29,13 +32,13 @@ const CardWrapper = styled("div", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  width: 350,
+  width: CARD_WIDTH,
   height: 300,
   position: "relative",
   background: "$glassGradientMiddle",
   color: "$light100",
   padding: "$l $xxl $xxl",
-  margin: '0 auto',
+  margin: "0 auto",
   borderRadius: 4,
   backdropFilter: "blur(4px)",
   transition: "250ms ease-in",
@@ -47,20 +50,20 @@ const CardWrapper = styled("div", {
   },
 });
 
-const Role = styled("div", {
+const Name = styled("div", {
   textAlign: "center",
-  fontSize: '$medium',
+  fontSize: "$medium",
   margin: "$l 0",
   fontWeight: "$400",
 });
 
-const Name = styled("div", {
+const Role = styled("div", {
   position: "absolute",
   padding: "$m $l",
   background: "$primaryGradient",
   width: "80%",
   textAlign: "center",
-  fontSize: '$medium',
+  fontSize: "$medium",
   color: "$light100",
   fontWeight: "$400",
   borderRadius: 4,
@@ -73,9 +76,47 @@ const Quote = styled("p", {
 });
 
 export const Testimonials = () => {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const quoteLoop = [...testimonials, ...testimonials];
+
+  // Start the slider in the middle
+
+  // useEffect(() => {
+  //   if (!carouselRef.current || !sliderRef.current) return
+  //   setInitialSliderPosition(carouselRef.current, sliderRef.current)
+  // },[])
+
+  // const setInitialSliderPosition = (carousel: HTMLDivElement, slider: HTMLDivElement) => {
+  //   const initialOffset = (slider.clientWidth / 2) - (carousel.clientWidth / 2)
+  //   carousel.scrollTo(initialOffset, 0)
+  // }
+  useEffect(() => {
+    if (!carouselRef.current) return;
+    const track = carouselRef.current;
+
+    track.onmousedown = (e) => {
+      track.dataset.mouseDownAt = e.clientX.toString();
+    };
+
+    track.onmousemove = (e) => {
+      const data:string = track.dataset.mouseDownAt
+      const mouseDelta = parseFloat(data) - e.clientX,
+        maxDelta = window.innerWidth / 2;
+
+      const percentage = (mouseDelta / maxDelta) * 100;
+
+      // sliderRef.current?.scrollTo({ left: mouseDelta, behavior: "smooth" });
+    };
+  });
+  const handleScroll = () => {
+    console.log(carouselRef.current);
+  };
+
   return (
-    <Carousel>
-        {testimonials.map((item, index) => (
+    <Carousel ref={carouselRef} onScroll={handleScroll} data-mouse-down-at={0}>
+      <Slider ref={sliderRef}>
+        {quoteLoop.map((item, index) => (
           <Card
             name={item.name}
             role={item.role}
@@ -84,23 +125,27 @@ export const Testimonials = () => {
             key={index}
           />
         ))}
+      </Slider>
     </Carousel>
   );
 };
 
 const Carousel = styled("div", {
-  display: 'flex',
-  justifyContent: 'center',
-  width: '100vw',
+  maxWidth: "100%",
   height: 320,
-  MsOverflowStyle: 'none',
-  scrollbarWidth: 'none',
-  scrollSnapType: 'x mandatory',
-  overflowX: 'scroll',
-  gap: '$l',
-  margin: '$xl 0',
+  MsOverflowStyle: "none",
+  scrollbarWidth: "none",
+  overflowX: "scroll",
+  gap: "$l",
+  margin: "$xl 0",
 
-  '&::-webkit-scrollbar': {
-    display: 'none',
-  }
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
+});
+
+const Slider = styled("div", {
+  display: "flex",
+  justifyContent: "center",
+  width: "max-content",
 });
