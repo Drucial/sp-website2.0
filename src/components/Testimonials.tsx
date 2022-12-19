@@ -1,7 +1,7 @@
 import { styled } from "@stitches/react";
 import { testimonials } from "../data/data";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { MouseEvent, TouchEvent, useEffect, useRef, useState } from "react";
 
 interface ICardProps {
   name: string;
@@ -19,7 +19,11 @@ const Card = ({ name, role, photo, quote }: ICardProps) => (
       alt="Stashpad for Mac OS"
       width={100}
       height={100}
-      style={{ borderRadius: 50, boxShadow: "0px 0px 20px rgba(0,0,0,.5)" }}
+      style={{
+        borderRadius: 50,
+        boxShadow: "0px 0px 20px rgba(0,0,0,.5)",
+        pointerEvents: "none",
+      }}
     />
     <Role>{role}</Role>
     <Name>{name}</Name>
@@ -40,9 +44,8 @@ const CardWrapper = styled("div", {
   padding: "$l $xxl $xxl",
   margin: "0 auto",
   borderRadius: 4,
-  backdropFilter: "blur(4px)",
   transition: "250ms ease-in",
-
+  userSelect: "none",
   transform: "scale(.9)",
 
   "&:hover": {
@@ -76,46 +79,93 @@ const Quote = styled("p", {
 });
 
 export const Testimonials = () => {
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const shouldReverse = useRef(false);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const mouseDownAt = useRef<number>(0);
+  const prevLocation = useRef<number>(0);
+  const location = useRef<number>(0);
+
   const quoteLoop = [...testimonials, ...testimonials];
+  // Needs Touch handlers & initial animation
+  const handleOnDown = (e: MouseEvent) => (mouseDownAt.current = e.clientX);
+  const handleOnUp = (e: MouseEvent) => {
+    mouseDownAt.current = 0;
+    prevLocation.current = location.current;
+  };
+  const handleOnMove = (e: MouseEvent) => {
+    if (mouseDownAt.current === 0 || !sliderRef.current) return;
 
-  // Start the slider in the middle
+    const mouseDelta = mouseDownAt.current - e.clientX,
+      maxDelta = sliderRef.current.clientWidth;
 
-  // useEffect(() => {
-  //   if (!carouselRef.current || !sliderRef.current) return
-  //   setInitialSliderPosition(carouselRef.current, sliderRef.current)
-  // },[])
+    const percentage = (mouseDelta / maxDelta) * -100,
+      nextPercentageUnconstrained = prevLocation.current + percentage,
+      nextPercentage = Math.max(
+        Math.min(nextPercentageUnconstrained, 0),
+        ((maxDelta - window.innerWidth) / maxDelta) * -100
+      );
 
-  // const setInitialSliderPosition = (carousel: HTMLDivElement, slider: HTMLDivElement) => {
-  //   const initialOffset = (slider.clientWidth / 2) - (carousel.clientWidth / 2)
-  //   carousel.scrollTo(initialOffset, 0)
-  // }
-  useEffect(() => {
-    if (!carouselRef.current) return;
-    const track = carouselRef.current;
-
-    track.onmousedown = (e) => {
-      track.dataset.mouseDownAt = e.clientX.toString();
-    };
-
-    track.onmousemove = (e) => {
-      const data:string = track.dataset.mouseDownAt
-      const mouseDelta = parseFloat(data) - e.clientX,
-        maxDelta = window.innerWidth / 2;
-
-      const percentage = (mouseDelta / maxDelta) * 100;
-
-      // sliderRef.current?.scrollTo({ left: mouseDelta, behavior: "smooth" });
-    };
-  });
-  const handleScroll = () => {
-    console.log(carouselRef.current);
+    location.current = nextPercentage;
+    sliderRef.current.animate(
+      {
+        transform: `translateX(${nextPercentage}%)`,
+      },
+      { duration: 500, fill: "forwards" }
+    );
   };
 
+  const autoScroller = () => {
+    if (!sliderRef.current) return;
+
+    const sliderWidth = sliderRef.current.clientWidth,
+    speed = 3,
+    maxTravel = ((sliderWidth - window.innerWidth) / sliderWidth) * -100,
+    reverse = shouldReverse.current
+
+
+    const moveOffset =
+        sliderRef.current.clientWidth / (quoteLoop.length * speed),
+      movePercentage = (moveOffset / sliderWidth) * -100,
+      nextPercentageUnconstrained = reverse
+        ? prevLocation.current - movePercentage
+        : prevLocation.current + movePercentage,
+      nextPercentage = Math.max(
+        Math.min(nextPercentageUnconstrained, 0),
+        maxTravel
+      );
+
+    if (nextPercentageUnconstrained <= maxTravel) (shouldReverse.current = true)
+    if (nextPercentageUnconstrained >= 0) (shouldReverse.current = false)
+
+    location.current = nextPercentage;
+    prevLocation.current = location.current;
+
+    sliderRef.current.animate(
+      {
+        transform: `translateX(${nextPercentage}%)`,
+      },
+      { duration: 2000, fill: "forwards" }
+    );
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      autoScroller();
+    }, 2000);
+    // should stop on hover
+    // sliderRef.current?.addEventListener('mouseover', clearInterval(interval))
+    return () => clearInterval(interval);
+  });
+
   return (
-    <Carousel ref={carouselRef} onScroll={handleScroll} data-mouse-down-at={0}>
-      <Slider ref={sliderRef}>
+    <Carousel>
+      <Slider
+        ref={sliderRef}
+        onMouseDown={handleOnDown}
+        onMouseMove={handleOnMove}
+        onMouseUp={handleOnUp}
+        onMouseLeave={handleOnUp}
+      >
         {quoteLoop.map((item, index) => (
           <Card
             name={item.name}
@@ -135,7 +185,6 @@ const Carousel = styled("div", {
   height: 320,
   MsOverflowStyle: "none",
   scrollbarWidth: "none",
-  overflowX: "scroll",
   gap: "$l",
   margin: "$xl 0",
 
@@ -148,4 +197,5 @@ const Slider = styled("div", {
   display: "flex",
   justifyContent: "center",
   width: "max-content",
+  cursor: "grab",
 });

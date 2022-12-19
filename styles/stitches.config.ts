@@ -1,5 +1,10 @@
 import { createStitches } from "@stitches/react";
-import { FOOTER_HEIGHT, MAX_WIDTH, NAV_HEIGHT, MOBILE_WIDTH } from "./constants";
+import {
+  FOOTER_HEIGHT,
+  MAX_WIDTH,
+  NAV_HEIGHT,
+  MOBILE_WIDTH,
+} from "./constants";
 
 export const { styled, css, globalCss, theme } = createStitches({
   theme: {
@@ -115,7 +120,7 @@ export const globalStyles = globalCss({
   },
 
   h2: {
-    fontSize: "$h2",
+    fontSize: "clamp($h3, 5vw, $h2)",
   },
 
   h3: {

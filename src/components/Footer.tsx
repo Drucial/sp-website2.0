@@ -23,7 +23,7 @@ export const Footer = () => {
         }
       >
         <IconsWrapper>
-          <SubscribeWrapper onClick={handleShowEmail}>
+          <SubscribeWrapper onClick={handleShowEmail} active={showContact}>
             <SubscribeIcon />
           </SubscribeWrapper>
           <SocialLinks width={24} fill={"white"} opacity={0.5} />
@@ -72,5 +72,13 @@ const SubscribeWrapper = styled("div", {
   "&:hover": {
     opacity: 1,
     background: "$primary100",
+  },
+  variants: {
+    active: {
+      true: {
+        background: "$primary100",
+        opacity: 1,
+      },
+    },
   },
 });
