@@ -16,8 +16,8 @@ export const ContactForm = () => {
 
 const ContactWrapper = styled("div", {
   height: 37,
-  marginTop: 16,
-  overflow: 'visible',
+  marginTop: '$l',
+  backdropFilter: 'blur(4px)',
   transition: "$medium",
   variants: {
     show: {

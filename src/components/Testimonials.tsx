@@ -118,14 +118,14 @@ export const Testimonials = () => {
     if (!sliderRef.current) return;
 
     const sliderWidth = sliderRef.current.clientWidth,
-    speed = 3,
-    maxTravel = ((sliderWidth - window.innerWidth) / sliderWidth) * -100,
-    reverse = shouldReverse.current
-
+      speed = 3,
+      reverse = shouldReverse.current,
+      maxTravel = ((sliderWidth - window.innerWidth) / sliderWidth) * -100
 
     const moveOffset =
         sliderRef.current.clientWidth / (quoteLoop.length * speed),
       movePercentage = (moveOffset / sliderWidth) * -100,
+      // Glitches a bit on the direction change. Why?
       nextPercentageUnconstrained = reverse
         ? prevLocation.current - movePercentage
         : prevLocation.current + movePercentage,
@@ -134,9 +134,9 @@ export const Testimonials = () => {
         maxTravel
       );
 
-    if (nextPercentageUnconstrained <= maxTravel) (shouldReverse.current = true)
-    if (nextPercentageUnconstrained >= 0) (shouldReverse.current = false)
-
+    if (nextPercentageUnconstrained <= maxTravel) shouldReverse.current = true;
+    if (nextPercentageUnconstrained >= 0) shouldReverse.current = false;
+    console.log(nextPercentageUnconstrained);
     location.current = nextPercentage;
     prevLocation.current = location.current;
 
@@ -144,14 +144,14 @@ export const Testimonials = () => {
       {
         transform: `translateX(${nextPercentage}%)`,
       },
-      { duration: 2000, fill: "forwards" }
+      { duration: 1000, fill: "forwards" }
     );
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       autoScroller();
-    }, 2000);
+    }, 1000);
     // should stop on hover
     // sliderRef.current?.addEventListener('mouseover', clearInterval(interval))
     return () => clearInterval(interval);

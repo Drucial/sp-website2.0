@@ -155,12 +155,10 @@ const NavItemList = styled("ul", {
   maxHeight: 0,
   overflow: "hidden",
   transition: "$long",
-  "& li": {
-    marginTop: "$m",
-  },
   "& a": {
     display: "flex",
     alignItems: "center",
+    padding: '$s 0'
   },
   "& svg": {
     marginRight: "$s",
