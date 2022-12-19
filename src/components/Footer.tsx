@@ -16,7 +16,7 @@ export const Footer = () => {
   return (
     <MainFooter mobile={isMobile}>
       <FooterWrapper mobile={isMobile}>
-        <IconsWrapper mobile={isMobile} active={showContact}>
+        <IconsWrapper mobile={isMobile}>
           <SubscribeWrapper onClick={handleShowEmail} active={showContact}>
             <SubscribeIcon />
           </SubscribeWrapper>
@@ -39,7 +39,7 @@ const MainFooter = styled("footer", {
   variants: {
     mobile: {
       true: {
-        // background: "$black",
+        minHeight: "auto",
         backdropFilter: "blur(8px)",
       },
     },
@@ -48,7 +48,7 @@ const MainFooter = styled("footer", {
 
 const FooterWrapper = styled("div", {
   display: "flex",
-  flexDirection: 'column',
+  flexDirection: "column",
   justifyContent: "flex-end",
   alignItems: "flex-end",
   width: "100%",
@@ -59,6 +59,7 @@ const FooterWrapper = styled("div", {
     mobile: {
       true: {
         alignItems: "center",
+        padding: "$l",
       },
     },
   },
@@ -71,11 +72,6 @@ const IconsWrapper = styled("div", {
     mobile: {
       true: {
         justifyContent: "center",
-      },
-    },
-    active: {
-      true: {
-        paddingTop: "$l",
       },
     },
   },

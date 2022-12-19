@@ -1,10 +1,10 @@
 import { styled } from "@stitches/react";
 import { testimonials } from "../data/data";
 import Image from "next/image";
-import { MouseEvent, TouchEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, useEffect, useRef} from "react";
 import { useRecoilValue } from "recoil";
 import { IsMobileState } from "../../state/atoms";
-import { calcLength } from "framer-motion";
+
 
 interface ICardProps {
   name: string;
@@ -12,9 +12,6 @@ interface ICardProps {
   photo: string;
   quote: string;
 }
-
-const CARD_WIDTH = 350;
-const CARD_HEIGHT = 300;
 
 const Card = ({ name, role, photo, quote }: ICardProps) => {
   const isMobile = useRecoilValue(IsMobileState);
@@ -31,9 +28,9 @@ const Card = ({ name, role, photo, quote }: ICardProps) => {
           pointerEvents: "none",
         }}
       />
-      <Role>{role}</Role>
       <Name>{name}</Name>
       <Quote>{quote}</Quote>
+      <Role>{role}</Role>
     </CardWrapper>
   );
 };
@@ -43,9 +40,7 @@ const CardWrapper = styled("div", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  width: CARD_WIDTH,
-  height: CARD_HEIGHT,
-  position: "relative",
+  width: 350,
   background: "$glassGradientMiddle",
   color: "$light100",
   padding: "$l $xxl $xxl",
@@ -61,8 +56,7 @@ const CardWrapper = styled("div", {
   variants: {
     mobile: {
       true: {
-        width: CARD_WIDTH - 50,
-        height: CARD_HEIGHT + 20,
+        width: 300,
       },
     },
   },
@@ -76,21 +70,21 @@ const Name = styled("div", {
 });
 
 const Role = styled("div", {
-  position: "absolute",
-  padding: "$m $l",
+  // position: "absolute",
+  color: "$light100",
   background: "$primaryGradient",
-  width: "80%",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
   textAlign: "center",
   fontSize: "$medium",
-  color: "$light100",
   fontWeight: "$400",
-  borderRadius: 4,
-  bottom: -20,
-  boxShadow: "0px 0px 20px rgba(0,0,0,.5)",
+  marginTop: 'auto',
 });
 
 const Quote = styled("p", {
+  fontSize: '$medium',
   fontWeight: "$200",
+  marginBottom: "$l",
 });
 
 export const Testimonials = () => {
@@ -133,7 +127,7 @@ export const Testimonials = () => {
     if (!sliderRef.current) return;
 
     const sliderWidth = sliderRef.current.clientWidth,
-      speed = 3,
+      speed = 5,
       reverse = shouldReverse.current,
       maxTravel = ((sliderWidth - window.innerWidth) / sliderWidth) * -100;
 
