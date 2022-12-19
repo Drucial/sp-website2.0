@@ -2,6 +2,9 @@ import { styled } from "@stitches/react";
 import { testimonials } from "../data/data";
 import Image from "next/image";
 import { MouseEvent, TouchEvent, useEffect, useRef, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { IsMobileState } from "../../state/atoms";
+import { calcLength } from "framer-motion";
 
 interface ICardProps {
   name: string;
@@ -11,25 +14,29 @@ interface ICardProps {
 }
 
 const CARD_WIDTH = 350;
+const CARD_HEIGHT = 300;
 
-const Card = ({ name, role, photo, quote }: ICardProps) => (
-  <CardWrapper>
-    <Image
-      src={photo}
-      alt="Stashpad for Mac OS"
-      width={100}
-      height={100}
-      style={{
-        borderRadius: 50,
-        boxShadow: "0px 0px 20px rgba(0,0,0,.5)",
-        pointerEvents: "none",
-      }}
-    />
-    <Role>{role}</Role>
-    <Name>{name}</Name>
-    <Quote>{quote}</Quote>
-  </CardWrapper>
-);
+const Card = ({ name, role, photo, quote }: ICardProps) => {
+  const isMobile = useRecoilValue(IsMobileState);
+  return (
+    <CardWrapper mobile={isMobile}>
+      <Image
+        src={photo}
+        alt="Stashpad for Mac OS"
+        width={100}
+        height={100}
+        style={{
+          borderRadius: 50,
+          boxShadow: "0px 0px 20px rgba(0,0,0,.5)",
+          pointerEvents: "none",
+        }}
+      />
+      <Role>{role}</Role>
+      <Name>{name}</Name>
+      <Quote>{quote}</Quote>
+    </CardWrapper>
+  );
+};
 
 const CardWrapper = styled("div", {
   flexShrink: 0,
@@ -37,7 +44,7 @@ const CardWrapper = styled("div", {
   flexDirection: "column",
   alignItems: "center",
   width: CARD_WIDTH,
-  height: 300,
+  height: CARD_HEIGHT,
   position: "relative",
   background: "$glassGradientMiddle",
   color: "$light100",
@@ -50,6 +57,14 @@ const CardWrapper = styled("div", {
 
   "&:hover": {
     transform: "scale(1)",
+  },
+  variants: {
+    mobile: {
+      true: {
+        width: CARD_WIDTH - 50,
+        height: CARD_HEIGHT + 20,
+      },
+    },
   },
 });
 
@@ -120,7 +135,7 @@ export const Testimonials = () => {
     const sliderWidth = sliderRef.current.clientWidth,
       speed = 3,
       reverse = shouldReverse.current,
-      maxTravel = ((sliderWidth - window.innerWidth) / sliderWidth) * -100
+      maxTravel = ((sliderWidth - window.innerWidth) / sliderWidth) * -100;
 
     const moveOffset =
         sliderRef.current.clientWidth / (quoteLoop.length * speed),

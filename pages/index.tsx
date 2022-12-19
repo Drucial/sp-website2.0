@@ -4,8 +4,11 @@ import Image from "next/image";
 import { GradientSpan } from "../styles/commonStyles";
 import { DevLove } from "../src/components/DevLove";
 import { Features } from "../src/components/Features";
+import { useRecoilValue } from "recoil";
+import { IsMobileState } from "../state/atoms";
 
 export default function Home() {
+  const isMobile = useRecoilValue(IsMobileState);
   return (
     <>
       <Head>
@@ -21,19 +24,34 @@ export default function Home() {
         <Subtitle>Stash now. Recover later. Enjoy the process.</Subtitle>
       </TitleSection>
 
-      <HeroSection>
-        <Image
-          src="/img/home/macbook2.png"
-          alt="Stashpad for Mac OS"
-          width={1300}
-          height={933}
-          style={{
-            display: "block",
-            height: "clamp(200px, 50vw, 820px)",
-            width: "auto",
-            margin: "0 auto",
-          }}
-        />
+      <HeroSection mobile={isMobile}>
+        {isMobile ? (
+          <Image
+            src="/img/home/phones.png"
+            alt="Stashpad for Mac OS"
+            width={699}
+            height={800}
+            style={{
+              display: "block",
+              height: "clamp(390px, 80vw, 820px)",
+              width: "auto",
+              margin: "0 auto",
+            }}
+          />
+        ) : (
+          <Image
+            src="/img/home/macbook2.png"
+            alt="Stashpad for Mac OS"
+            width={1300}
+            height={933}
+            style={{
+              display: "block",
+              height: "clamp(200px, 50vw, 820px)",
+              width: "auto",
+              margin: "0 auto",
+            }}
+          />
+        )}
       </HeroSection>
       <DevLove />
       <Features />
@@ -42,7 +60,7 @@ export default function Home() {
 }
 
 const TitleSection = styled("section", {
-  marginTop: '$xxxl',
+  marginTop: "$xxxl",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -65,13 +83,20 @@ const Subtitle = styled("h2", {
 
 const HeroSection = styled("section", {
   position: "relative",
+  variants: {
+    mobile: {
+      true: {
+        marginTop: "$l",
+      },
+    },
+  },
   "&::after": {
     content: "",
     position: "absolute",
     width: "15vw",
     height: "15vw",
-    right: '25%',
-    top: '20%',
+    right: "25%",
+    top: "20%",
     zIndex: -1,
     borderRadius: 150,
     boxShadow: "$bigPrimary",
@@ -82,8 +107,8 @@ const HeroSection = styled("section", {
     position: "absolute",
     width: "10vw",
     height: "10vw",
-    left: '30%',
-    bottom: '40%',
+    left: "30%",
+    bottom: "40%",
     zIndex: -1,
     borderRadius: 150,
     boxShadow: "$bigPrimary200",

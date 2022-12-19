@@ -62,7 +62,7 @@ export const Features = () => {
 };
 
 const Section = styled("section", {
-  padding: "$xxl $l",
+  padding: "$xxxl $l",
   marginTop: "$xxxl",
 });
 

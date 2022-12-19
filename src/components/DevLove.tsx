@@ -27,7 +27,7 @@ export const DevLove = () => {
 };
 
 const Section = styled("section", {
-  padding: "$xxl 0",
+  padding: "$xxxl 0",
   margin: "$xxxl 0",
   maxWidth: "100%",
 });
