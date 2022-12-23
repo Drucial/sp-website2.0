@@ -11,15 +11,15 @@ export const TestimonialSection = () => {
   const isMobile = useRecoilValue(IsMobileState)
   return (
     <Section>
-      <LovedWrapper>
+      <Heading>
         <Title>Loved by engineers at</Title>
-        <MooseHeadsWrapper mobile={isMobile}>
+        <LogosWrapper mobile={isMobile}>
           <TwilioLogo />
           <AlgoliaLogo />
           <CloudinaryLogo />
           <LoomLogo />
-        </MooseHeadsWrapper>
-      </LovedWrapper>
+        </LogosWrapper>
+      </Heading>
       <Testimonials />
     </Section>
   );
@@ -31,7 +31,7 @@ const Section = styled("section", {
   maxWidth: "100%",
 });
 
-const LovedWrapper = styled("div", {
+const Heading = styled("div", {
   padding: "0 $l",
 });
 
@@ -39,7 +39,7 @@ const Title = styled("h2", {
   textAlign: "center",
 });
 
-const MooseHeadsWrapper = styled("div", {
+const LogosWrapper = styled("div", {
   display: "flex",
   justifyContent: "center",
   "& svg": {

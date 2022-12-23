@@ -6,7 +6,7 @@ import { IsMobileState } from "../../state/atoms";
 export const HeroSection = () => {
   const isMobile = useRecoilValue(IsMobileState);
   return (
-    <Hero mobile={isMobile}>
+    <Section mobile={isMobile}>
       {isMobile ? (
         <Image
           src="/img/home/phones.png"
@@ -34,11 +34,11 @@ export const HeroSection = () => {
           }}
         />
       )}
-    </Hero>
+    </Section>
   );
 };
 
-const Hero = styled("section", {
+const Section = styled("section", {
   position: "relative",
   variants: {
     mobile: {

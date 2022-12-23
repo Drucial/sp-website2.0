@@ -3,16 +3,16 @@ import { GradientSpan } from "../../styles/commonStyles";
 
 export const TitleSection = () => {
   return (
-    <TitleWrapper>
+    <Section>
       <Title>
         Notes <GradientSpan>Reimagined</GradientSpan>
       </Title>
       <Subtitle>Stash now. Recover later. Enjoy the process.</Subtitle>
-    </TitleWrapper>
+    </Section>
   );
 };
 
-const TitleWrapper = styled("section", {
+const Section = styled("section", {
   marginTop: "$xxxl",
   display: "flex",
   flexDirection: "column",
