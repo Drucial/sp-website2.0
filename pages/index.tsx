@@ -6,11 +6,12 @@ import { DevLove } from "../src/components/DevLove";
 import { Features } from "../src/components/Features";
 import { useRecoilValue } from "recoil";
 import { IsMobileState } from "../state/atoms";
+import Layout from "../src/components/Layout";
 
 export default function Home() {
   const isMobile = useRecoilValue(IsMobileState);
   return (
-    <>
+    <Layout>
       <Head>
         <title>Stashpad</title>
         <meta name="description" content="Notes Reimagined" />
@@ -55,7 +56,7 @@ export default function Home() {
       </HeroSection>
       <DevLove />
       <Features />
-    </>
+    </Layout>
   );
 }
 

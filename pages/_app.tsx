@@ -1,31 +1,25 @@
-import { ReactElement, ReactNode, useEffect } from "react";
-import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { globalStyles } from "../styles/stitches.config";
 import "../styles/globals.css";
-import { RecoilRoot, useSetRecoilState } from "recoil";
-import Layout from "../src/components/Layout";
+import { RecoilRoot } from "recoil";
+import { NavBar } from "../src/components/NavBar";
+import { Footer } from "../src/components/Footer";
 import { AnimatePresence } from "framer-motion";
-import { IsMobileState } from "../state/atoms";
-import { MOBILE_WIDTH } from "../styles/constants";
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
+export default function App({ Component, pageProps, router }: AppProps) {
+  const url = `https://wallis.dev${router.route}`
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page);
   globalStyles();
 
-  return getLayout(
+  return (
     <RecoilRoot>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <div className="app">
+        <NavBar />
+        <AnimatePresence initial={false} mode="wait">
+          <Component {...pageProps} key={url}/>
+        </AnimatePresence>
+        <Footer />
+      </div>
     </RecoilRoot>
   );
 }

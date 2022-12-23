@@ -1,16 +1,16 @@
-import { NavBar } from "./NavBar";
-import { Footer } from "./Footer";
 import { useEffect } from "react";
 import { MOBILE_WIDTH } from "../../styles/constants";
 import { useSetRecoilState } from "recoil";
 import { IsMobileState } from "../../state/atoms";
+import { AnimatePresence, motion } from "framer-motion";
 
-type LayoutProps = {
+type Props = {
   children: React.ReactNode;
 };
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: Props): JSX.Element {
   const setIsMobile = useSetRecoilState(IsMobileState);
+
   const updateIsMobile = () => {
     window.innerWidth <= MOBILE_WIDTH ? setIsMobile(true) : setIsMobile(false);
   };
@@ -25,6 +25,7 @@ export default function Layout({ children }: LayoutProps) {
   useEffect(() => {
     updateIsMobile();
   });
+
   const setViewportHeight = () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
@@ -38,11 +39,21 @@ export default function Layout({ children }: LayoutProps) {
     };
   });
 
+  const variants = {
+    hidden: { opacity: 0, x: "20%", y: 0 },
+    enter: { opacity: 1, x: 0, y: 0 },
+    exit: { opacity: 0, x: "-20%", y: 0 },
+  };
+
   return (
-    <div className="app">
-      <NavBar />
-      <main>{children}</main>
-      <Footer />
-    </div>
+    <motion.main
+      initial="hidden"
+      animate="enter"
+      exit="exit"
+      variants={variants}
+      // transition={{ type: "spring" }}
+    >
+      {children}
+    </motion.main>
   );
 }
