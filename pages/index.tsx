@@ -1,4 +1,3 @@
-import { styled } from "@stitches/react";
 import Head from "next/head";
 import { TestimonialSection } from "../src/components/TestimonialSection";
 import { Features } from "../src/components/Features";
@@ -7,6 +6,7 @@ import { IsMobileState } from "../state/atoms";
 import Layout from "../src/components/Layout";
 import { HeroSection } from "../src/components/HeroSection";
 import { TitleSection } from "../src/components/TitleSection";
+import { FastSection } from "../src/components/FastSection";
 
 export default function Home() {
   const isMobile = useRecoilValue(IsMobileState);
@@ -21,7 +21,7 @@ export default function Home() {
       <TitleSection />
       <HeroSection />
       <TestimonialSection />
-      <Features />
+      <FastSection />
     </Layout>
   );
 }
