@@ -37,6 +37,7 @@ const Heading = styled("div", {
 
 const Title = styled("h2", {
   textAlign: "center",
+  padding: "$l 0"
 });
 
 const LogosWrapper = styled("div", {

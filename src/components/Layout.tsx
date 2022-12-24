@@ -1,8 +1,16 @@
 import { useEffect } from "react";
-import { MOBILE_WIDTH } from "../../styles/constants";
+import {
+  DESKTOP_WIDTH,
+  MOBILE_WIDTH,
+  TABLET_WIDTH,
+} from "../../styles/constants";
 import { useSetRecoilState } from "recoil";
-import { IsMobileState } from "../../state/atoms";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  IsDesktopState,
+  IsMobileState,
+  IsTabletState,
+} from "../../state/atoms";
+import { motion } from "framer-motion";
 
 type Props = {
   children: React.ReactNode;
@@ -10,20 +18,43 @@ type Props = {
 
 export default function Layout({ children }: Props): JSX.Element {
   const setIsMobile = useSetRecoilState(IsMobileState);
+  const setIsTablet = useSetRecoilState(IsTabletState);
+  const setIsDesktop = useSetRecoilState(IsDesktopState);
 
   const updateIsMobile = () => {
     window.innerWidth <= MOBILE_WIDTH ? setIsMobile(true) : setIsMobile(false);
   };
 
+  const updateIsTablet = () => {
+    window.innerWidth <= TABLET_WIDTH ? setIsTablet(true) : setIsTablet(false);
+  };
+
+  const updateIsDesktop = () => {
+    window.innerWidth <= DESKTOP_WIDTH
+      ? setIsDesktop(true)
+      : setIsDesktop(false);
+  };
+
   useEffect(() => {
-    window.addEventListener("resize", updateIsMobile);
+    window.addEventListener("resize", () => {
+      updateIsMobile();
+      updateIsTablet();
+      updateIsDesktop();
+    });
     return () => {
-      window.removeEventListener("resize", updateIsMobile);
+      window.removeEventListener("resize", () => {
+        updateIsMobile();
+        updateIsTablet();
+        updateIsDesktop();
+      });
     };
   });
 
   useEffect(() => {
     updateIsMobile();
+    updateIsTablet();
+    updateIsDesktop();
+    setViewportHeight()
   });
 
   const setViewportHeight = () => {

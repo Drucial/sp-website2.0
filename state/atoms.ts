@@ -5,6 +5,16 @@ export const IsMobileState = atom({
   default: false,
 });
 
+export const IsTabletState = atom({
+  key: 'IsTabletState',
+  default: false,
+});
+
+export const IsDesktopState = atom({
+  key: 'IsDesktopState',
+  default: false,
+});
+
 export const MobileNavShowState = atom({
   key: 'MobileNavShowState',
   default: false,

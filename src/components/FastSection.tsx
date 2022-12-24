@@ -1,73 +1,74 @@
 import Image from "next/image";
 import { styled } from "@stitches/react";
 import { useRecoilValue } from "recoil";
-import { IsMobileState } from "../../state/atoms";
+import { IsTabletState } from "../../state/atoms";
 import { theme } from "../../styles/stitches.config";
+import { GradientSpan } from "../../styles/commonStyles";
 
 export const FastSection = () => {
-  const isMobile = useRecoilValue(IsMobileState);
+  const isTablet = useRecoilValue(IsTabletState);
+
   return (
     <Section>
-      <Title>A ridiculously fast notes experience</Title>
+      <Title>The fastest notes <GradientSpan>experience</GradientSpan></Title>
       <FeatureWrapper>
-        <Feature>
-          <Gif>
+        <Feature stack={isTablet}>
+          <Gif stack={isTablet}>
             <GifBorder>
               <Image
                 alt="Stashpad focus command"
                 src="/gif/fast/focus.gif"
                 width={1000}
                 height={749}
-                style={{ display: "block", height: 300, width: "auto" }}
               />
             </GifBorder>
           </Gif>
-          <Content alignRight={isMobile ? false : true}>
+          <Content alignRight={!isTablet}>
+            <Tag>Don&apos;t lose your flow</Tag>
             <Heading>Dedicated focus command</Heading>
             <Description>
-              Bring Stashpad front and center with a customizeable, dedicated
-              focus command. Don&apos;t lose that thought.
+              Bring Stashpad front and center with a customizeable focus
+              command.
             </Description>
           </Content>
         </Feature>
-        <Feature>
-          <Content>
+        <Feature stack={isTablet}>
+          <Content stack={isTablet}>
+            <Tag>Stashpad won&apos;t slow you down</Tag>
             <Heading>Sub 100ms actions</Heading>
             <Description>
               Create, edit, move, search, delete, select and mark as done...All
-              in under 100ms. Stashpad wont slow you down.
+              in under 100ms.
             </Description>
           </Content>
-          <Gif alignRight={isMobile ? false : true}>
+          <Gif alignRight={!isTablet} stack={isTablet}>
             <GifBorder>
               <Image
                 alt="Stashpad focus command"
-                src="/gif/fast/focus.gif"
+                src="/gif/fast/actions.gif"
                 width={1000}
                 height={749}
-                style={{ display: "block", height: 300, width: "auto" }}
               />
             </GifBorder>
           </Gif>
         </Feature>
-        <Feature>
-          <Gif>
+        <Feature stack={isTablet}>
+          <Gif stack={isTablet}>
             <GifBorder>
               <Image
                 alt="Stashpad focus command"
-                src="/gif/fast/focus.gif"
+                src="/gif/fast/sticky.gif"
                 width={1000}
                 height={749}
-                style={{ display: "block", height: 300, width: "auto" }}
               />
             </GifBorder>
           </Gif>
-          <Content alignRight={isMobile ? false : true}>
+          <Content alignRight={!isTablet}>
+            <Tag>Super convenient capture</Tag>
             <Heading>Tiny/Sticky mode</Heading>
             <Description>
-              Quickly engage Tiny mode for a post-it size version of the app.
-              Engage sticky mode to keep it on top of the pile for quick
-              capture.
+              Quickly engage Tiny mode for a post-it sized version of the app.
+              Engage sticky mode to keep it on top of the pile.
             </Description>
           </Content>
         </Feature>
@@ -81,6 +82,7 @@ const Section = styled("section", {
 });
 
 const Title = styled("h2", {
+  fontSize: "clamp($h2, 5vw, $extraLarge)",
   textAlign: "center",
   marginBottom: "$xxxl",
 });
@@ -95,14 +97,44 @@ const Feature = styled("div", {
   gridTemplateColumns: "1fr 1fr",
   gap: "$xl",
   padding: "$xxxl 0",
+  variants: {
+    stack: {
+      true: {
+        gridTemplateColumns: "1fr",
+        gridTemplateAreas: `"top"
+                            "bottom"`,
+        width: "100%",
+        maxWidth: 500,
+        margin: "0 auto",
+      },
+    },
+  },
 });
 
 const Gif = styled("div", {
   display: "flex",
+
+  "& img": {
+    display: "block",
+    height: 350,
+    width: "auto",
+    borderRadius: 8,
+  },
   variants: {
     alignRight: {
       true: {
         justifyContent: "flex-end",
+      },
+    },
+    stack: {
+      true: {
+        gridArea: "top",
+        justifyContent: "center",
+
+        "& img": {
+          height: "auto",
+          width: "100%",
+        },
       },
     },
   },
@@ -111,10 +143,6 @@ const Gif = styled("div", {
 const GifBorder = styled("div", {
   borderRadius: 8,
   position: "relative",
-
-  "& img": {
-    borderRadius: 8,
-  },
 
   "&::before": {
     content: "",
@@ -135,7 +163,7 @@ const GifBorder = styled("div", {
     left: -2,
     right: -2,
     boxShadow: `0px 0px 100px ${theme.colors.primary100}`,
-    opacity: 0.3,
+    opacity: 0.4,
   },
 });
 
@@ -150,10 +178,23 @@ const Content = styled("div", {
         alignItems: "flex-end",
       },
     },
+    stack: {
+      true: {
+        gridArea: "bottom",
+      },
+    },
   },
 });
 
-const Heading = styled("h3", {});
+const Tag = styled("p", {
+  fontWeight: "$100",
+  marginBottom: "$s",
+});
+
+const Heading = styled("h3", {
+  marginBottom: "$l",
+});
+
 const Description = styled("p", {
   maxWidth: "35ch",
 });

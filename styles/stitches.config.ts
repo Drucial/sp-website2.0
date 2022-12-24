@@ -4,6 +4,8 @@ import {
   MAX_WIDTH,
   NAV_HEIGHT,
   MOBILE_WIDTH,
+  TABLET_WIDTH,
+  DESKTOP_WIDTH,
 } from "./constants";
 
 export const { styled, css, globalCss, theme } = createStitches({
@@ -84,8 +86,8 @@ export const { styled, css, globalCss, theme } = createStitches({
   },
   media: {
     bp1: `(max-width: ${MOBILE_WIDTH})`,
-    bp2: "(max-width: 768px)",
-    bp3: "(max-width: 1024px)",
+    bp2: `(max-width: ${TABLET_WIDTH})`,
+    bp3: `(max-width: ${DESKTOP_WIDTH})`,
   },
 });
 
@@ -117,22 +119,31 @@ export const globalStyles = globalCss({
 
   h1: {
     fontSize: "$h1",
+    lineHeight: 1,
   },
 
   h2: {
     fontSize: "clamp($h3, 5vw, $h2)",
+    lineHeight: 1.2,
   },
 
   h3: {
     fontSize: "$h3",
+    lineHeight: 1.25,
   },
 
   h4: {
     fontSize: "$h4",
+    lineHeight: 1.3,
   },
 
   p: {
     fontSize: "$regular",
+    lineHeight: 1.4,
+  },
+
+  "p + p": {
+    marginTop: "$l",
   },
 
   a: {
