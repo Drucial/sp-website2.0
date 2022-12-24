@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { TestimonialSection } from "../src/components/TestimonialSection";
-import { Features } from "../src/components/Features";
 import { useRecoilValue } from "recoil";
 import { IsMobileState } from "../state/atoms";
 import Layout from "../src/components/Layout";
 import { HeroSection } from "../src/components/HeroSection";
 import { TitleSection } from "../src/components/TitleSection";
 import { FastSection } from "../src/components/FastSection";
+import { DownloadSection } from "../src/components/DownloadSection";
 
 export default function Home() {
   const isMobile = useRecoilValue(IsMobileState);
@@ -19,7 +19,17 @@ export default function Home() {
       </Head>
 
       <TitleSection />
-      <HeroSection />
+      {isMobile ? (
+        <>
+          <HeroSection />
+          <DownloadSection />
+        </>
+      ) : (
+        <>
+          <DownloadSection />
+          <HeroSection />
+        </>
+      )}
       <TestimonialSection />
       <FastSection />
     </Layout>

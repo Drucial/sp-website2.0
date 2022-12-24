@@ -18,8 +18,8 @@ export const { styled, css, globalCss, theme } = createStitches({
       light200: "hsl(0,0%,100%)",
       primary100: "hsl(249, 64%, 56%)",
       primary200: "hsl(249, 96%, 57%)",
-      accent100: "hsl(77, 95%, 61%)",
-      accent200: "hsl(126, 74%, 69%)",
+      accent100: "hsl(278, 52%, 45%)",
+      accent200: "hsl(300, 90%, 49%)",
       primaryGradient:
         "linear-gradient(338deg, rgba(131,55,174,1) 0%, rgba(93,71,215,1) 100%)",
       accentGradient:
@@ -147,11 +147,11 @@ export const globalStyles = globalCss({
   },
 
   a: {
-    color: "$accent100",
+    color: "$light200",
     fontWeight: "$400",
     transition: "$short",
     "&:hover": {
-      color: "$accent200",
+      color: "$primary100",
     },
   },
 });

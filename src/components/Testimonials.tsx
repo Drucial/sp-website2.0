@@ -145,7 +145,7 @@ export const Testimonials = () => {
 
     if (nextPercentageUnconstrained <= maxTravel) shouldReverse.current = true;
     if (nextPercentageUnconstrained >= 0) shouldReverse.current = false;
-    console.log(nextPercentageUnconstrained);
+    
     location.current = nextPercentage;
     prevLocation.current = location.current;
 

@@ -1,6 +1,7 @@
 import { LinuxIcon } from "../svg/LinuxIcon";
 import { WindowsIcon } from "../svg/WindowsIcon";
 import { AppleIcon } from "./../svg/AppleIcon";
+
 export const downloadLinks = [
   {
     os: "Mac",
@@ -15,7 +16,13 @@ export const downloadLinks = [
     icon: AppleIcon,
   },
   {
-    os: "Win",
+    os: "iOS",
+    version: "",
+    link: "", //This need updating once appstore link is available
+    icon: AppleIcon,
+  },
+  {
+    os: "Windows",
     version: "",
     link: "https://releases.stashpad.com/download/win",
     icon: WindowsIcon,

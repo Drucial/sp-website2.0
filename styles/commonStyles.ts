@@ -17,9 +17,7 @@ export const PrimaryButton = styled("div", {
   position: "relative",
   transition: "$short",
   cursor: "pointer",
-  "&:hover": {
-    background: "rgba(0,0,0,0)",
-  },
+
   "&::before": {
     content: `''`,
     backgroundImage: "$primaryGradient",
@@ -30,6 +28,18 @@ export const PrimaryButton = styled("div", {
     left: "-1px",
     borderRadius: "inherit",
     zIndex: -1,
+  },
+  
+  "&:hover": {
+    background: "rgba(0,0,0,0)",
+  },
+
+  variants: {
+    large: {
+      true: {
+        padding: "$m $xxl",
+      },
+    },
   },
 });
 
