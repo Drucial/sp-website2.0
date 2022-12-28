@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { IsMobileState } from "../../state/atoms";
 import { PrimaryButton } from "../../styles/commonStyles";
-import { downloadLinks } from "../data/data";
+import { downloadLinks } from "../data/downloads";
 
 export const Downloader = () => {
   type Download = {
@@ -57,7 +57,8 @@ export const Downloader = () => {
     if (!primaryDL) {
       primaryDL = altDownloadsArr.shift();
     }
-    setPrimaryDownload(primaryDL);
+
+    setPrimaryDownload(primaryDL || downloadLinks[0]);
     setAltDownloads(altDownloadsArr);
   };
 
@@ -91,10 +92,10 @@ export const Downloader = () => {
       <AlternateDownloads>
         Also available for{" "}
         {altDownloads.map((item, i) => (
-          <>
-            <Link key={i} href={item.link}>{`${item.version} ${item.os}`}</Link>
+          <span key={i}>
+            <Link href={item.link}>{`${item.version} ${item.os}`}</Link>
             {item.os === "Windows" ? ", and" : item.os === "Linux" ? "" : ", "}
-          </>
+          </span>
         ))}
         {isMobile ? ". Android coming soon!" : "."}
       </AlternateDownloads>

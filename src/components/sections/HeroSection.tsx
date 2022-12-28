@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { styled } from "@stitches/react";
 import { useRecoilValue } from "recoil";
-import { IsMobileState } from "../../state/atoms";
+import { IsMobileState } from "../../../state/atoms";
 
 export const HeroSection = () => {
   const isMobile = useRecoilValue(IsMobileState);

@@ -41,7 +41,7 @@ export const { styled, css, globalCss, theme } = createStitches({
       l: "16px",
       xl: "24px",
       xxl: "32px",
-      xxxl: "64px",
+      xxxl: "72px",
     },
     fontSizes: {
       smallest: "12px",
@@ -56,16 +56,17 @@ export const { styled, css, globalCss, theme } = createStitches({
       h1: "48px",
     },
     fonts: {
-      heading: "Poppins, apple-system, sans-serif",
+      heading: "Inter Tight, apple-system, sans-serif",
       text: "Noto Sans, Helvetica, sans-serif",
       mono: "Söhne Mono, menlo, monospace",
     },
     fontWeights: {
-      100: 100,
-      200: 300,
-      300: 400,
-      400: 500,
-      500: 900,
+      1: 200,
+      2: 300,
+      3: 400,
+      4: 500,
+      5: 700,
+      6: 900,
     },
     sizes: {},
     radii: {
@@ -105,16 +106,20 @@ export const globalStyles = globalCss({
   main: {
     paddingTop: NAV_HEIGHT,
     paddingBottom: FOOTER_HEIGHT,
+    paddingLeft: '$l',
+    paddingRight: '$l',
   },
 
   section: {
+    width: '100%',
     maxWidth: MAX_WIDTH,
-    margin: "0 auto",
-    padding: "0 16px",
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 
   "h1, h2, h3, h4": {
     fontFamily: "$heading",
+    fontWeight: 500,
   },
 
   h1: {
@@ -148,7 +153,7 @@ export const globalStyles = globalCss({
 
   a: {
     color: "$light200",
-    fontWeight: "$400",
+    fontWeight: "$4",
     transition: "$short",
     "&:hover": {
       color: "$primary100",

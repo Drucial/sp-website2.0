@@ -1,11 +1,11 @@
 import { styled } from "@stitches/react";
 import { useRecoilValue } from "recoil";
-import { IsMobileState } from "../../state/atoms";
-import { AlgoliaLogo } from "../svg/AlgoliaLogo";
-import { CloudinaryLogo } from "../svg/CloudinaryLogo";
-import { LoomLogo } from "../svg/LoomLogo";
-import { TwilioLogo } from "../svg/TwilioLogo";
-import { Testimonials } from "./Testimonials";
+import { IsMobileState } from "../../../state/atoms";
+import { AlgoliaLogo } from "../../svg/AlgoliaLogo";
+import { CloudinaryLogo } from "../../svg/CloudinaryLogo";
+import { LoomLogo } from "../../svg/LoomLogo";
+import { TwilioLogo } from "../../svg/TwilioLogo";
+import { Testimonials } from "../Testimonials";
 
 export const TestimonialSection = () => {
   const isMobile = useRecoilValue(IsMobileState)

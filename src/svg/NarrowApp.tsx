@@ -1,11 +1,28 @@
 import { SvgGraphic } from "../SvgGraphic";
 interface IProps {
-  height?: number;
+  height?: string;
+  width?: string;
+  opacity?: number;
+  index?: number;
+  blur?: number;
 }
 
-export const NarrowApp = ({ height }: IProps) => {
+export const NarrowApp = ({ height, width, opacity, index, blur  }: IProps) => {
   return (
-    <SvgGraphic width={354} height={613} fill="none" style={{ height: height, display: 'block' }}>
+    <SvgGraphic
+      width={354}
+      height={613}
+      fill="none"
+      style={{
+        width: width || "auto",
+        height: height || "auto",
+        opacity: opacity,
+        zIndex: index,
+        display: "block",
+        position: "relative",
+        filter: `blur(${blur}px)`,
+      }}
+    >
       <rect
         width="352"
         height="611"

@@ -1,22 +1,44 @@
-import { styled } from "@stitches/react";
-import Head from "next/head";
 import Layout from "../src/components/Layout";
+import groq from "groq";
+import { useRouter } from "next/router";
+import client from "../client";
+import { Posts } from "../typings";
+import { PageTitle } from "../src/components/PageTitle";
+import { FeaturedPost } from "../src/components/FeaturedPost";
+import { PostsGrid } from "../src/components/PostsGrid";
 
-export default function Blog() {
+
+
+export async function getStaticProps() {
+  const posts =
+    await client.fetch(groq`*[_type == "post" && publishedAt < now()]{
+      ...,
+      "name": author->name,
+			"name2": coauthor->name,
+      "category": categories[0]->title,
+    } | order(publishedAt desc)`);
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+type Props = {
+  posts: [Posts];
+}
+
+export default function Blog({ posts }: Props) {
+  const filteredPosts = [...posts];
+  const firstPost = filteredPosts.shift();
+  const router = useRouter();
+  const url = router.asPath;
+
   return (
     <Layout>
-      <Head></Head>
-      <MainSection>
-        <h1>Blog</h1>
-      </MainSection>
+      <PageTitle title="Blog" subtitle="From the Stashpad team & community"/>
+      <FeaturedPost blog={firstPost}/>
+      <PostsGrid blogs={filteredPosts} />
     </Layout>
   );
 }
-
-const MainSection = styled("section", {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "100%",
-  backgroundColor: '$primary100'
-});

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { IsMobileState, MobileNavShowState } from "../../state/atoms";
 import { MAX_WIDTH, NAV_HEIGHT } from "../../styles/constants";
-import { downloadLinks } from "../data/data";
+import { downloadLinks } from "../data/downloads";
 import { LoginIcon } from "../icons/LoginIcon";
 import { SpLogo } from "../svg/SpLogo";
 
@@ -158,7 +158,7 @@ const NavItemList = styled("ul", {
   "& a": {
     display: "flex",
     alignItems: "center",
-    padding: '$s 0'
+    padding: "$s 0",
   },
   "& svg": {
     marginRight: "$s",
@@ -238,10 +238,10 @@ const ToggleBar = styled("div", {
 const MobileNavList = styled("ul", {
   position: "absolute",
   right: 0,
-  top: '$xxxl',
-  display: 'grid',
-  gap: '$s',
-  textAlign: 'right',
+  top: "$xxxl",
+  display: "grid",
+  gap: "$s",
+  textAlign: "right",
   fontSize: "$small",
   transition: "$medium",
   variants: {

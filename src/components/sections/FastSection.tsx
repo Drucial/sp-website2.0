@@ -1,16 +1,16 @@
 import Image from "next/image";
 import { styled } from "@stitches/react";
 import { useRecoilValue } from "recoil";
-import { IsTabletState } from "../../state/atoms";
-import { theme } from "../../styles/stitches.config";
-import { GradientSpan } from "../../styles/commonStyles";
+import { IsTabletState } from "../../../state/atoms";
+import { theme } from "../../../styles/stitches.config";
+import { GradientSpan } from "../../../styles/commonStyles";
 
 export const FastSection = () => {
   const isTablet = useRecoilValue(IsTabletState);
 
   return (
     <Section>
-      <Title>The fastest notes <GradientSpan>experience</GradientSpan></Title>
+      <Title>The fastest notes <br/><GradientSpan>experience</GradientSpan></Title>
       <FeatureWrapper>
         <Feature stack={isTablet}>
           <Gif stack={isTablet}>
@@ -78,11 +78,12 @@ export const FastSection = () => {
 };
 
 const Section = styled("section", {
-  padding: "$xxxl $l",
+  padding: "$xxxl 0",
 });
 
 const Title = styled("h2", {
   fontSize: "clamp($h2, 5vw, $extraLarge)",
+  fontWeight: '$6',
   textAlign: "center",
   marginBottom: "$xxxl",
 });
@@ -187,7 +188,7 @@ const Content = styled("div", {
 });
 
 const Tag = styled("p", {
-  fontWeight: "$100",
+  fontWeight: "$1",
   marginBottom: "$s",
 });
 

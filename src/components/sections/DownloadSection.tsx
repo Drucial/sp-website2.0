@@ -1,5 +1,5 @@
 import { styled } from "@stitches/react";
-import { Downloader } from "./Downloader";
+import { Downloader } from "../Downloader";
 
 export const DownloadSection = () => {
   return (
@@ -10,6 +10,5 @@ export const DownloadSection = () => {
 };
 
 const Section = styled("section", {
-  padding: "$xxl $l $l",
+  padding: "$xxxl 0 $l",
 });
-

@@ -1,10 +1,9 @@
 import { styled } from "@stitches/react";
-import { testimonials } from "../data/data";
+import { testimonials } from "../data/testimonials";
 import Image from "next/image";
-import { MouseEvent, useEffect, useRef} from "react";
+import { MouseEvent, useEffect, useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { IsMobileState } from "../../state/atoms";
-
 
 interface ICardProps {
   name: string;
@@ -66,7 +65,7 @@ const Name = styled("div", {
   textAlign: "center",
   fontSize: "$medium",
   margin: "$l 0",
-  fontWeight: "$400",
+  fontWeight: "$4",
 });
 
 const Role = styled("div", {
@@ -77,13 +76,13 @@ const Role = styled("div", {
   WebkitTextFillColor: "transparent",
   textAlign: "center",
   fontSize: "$medium",
-  fontWeight: "$400",
-  marginTop: 'auto',
+  fontWeight: "$4",
+  marginTop: "auto",
 });
 
 const Quote = styled("p", {
-  fontSize: '$medium',
-  fontWeight: "$200",
+  fontSize: "$medium",
+  fontWeight: "$2",
   marginBottom: "$l",
 });
 
@@ -145,7 +144,7 @@ export const Testimonials = () => {
 
     if (nextPercentageUnconstrained <= maxTravel) shouldReverse.current = true;
     if (nextPercentageUnconstrained >= 0) shouldReverse.current = false;
-    
+
     location.current = nextPercentage;
     prevLocation.current = location.current;
 

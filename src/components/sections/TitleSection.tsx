@@ -1,5 +1,5 @@
 import { styled } from "@stitches/react";
-import { GradientSpan } from "../../styles/commonStyles";
+import { GradientSpan } from "../../../styles/commonStyles";
 
 export const TitleSection = () => {
   return (
@@ -21,14 +21,14 @@ const Section = styled("section", {
 
 const Title = styled("h1", {
   fontSize: "clamp($h1, 10vw, 96px)",
-  fontWeight: "$500",
+  fontWeight: "$6",
   lineHeight: 1,
   textAlign: "center",
 });
 
 const Subtitle = styled("h2", {
   fontSize: "clamp(16px, 5vw, $h2)",
-  fontWeight: "$200",
+  fontWeight: "$2",
   lineHeight: 1.2,
   textAlign: "center",
   marginTop: "$l",
