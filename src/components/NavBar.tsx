@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { IsMobileState, MobileNavShowState } from "../../state/atoms";
 import { MAX_WIDTH, NAV_HEIGHT } from "../../styles/constants";
+import { theme } from "../../styles/stitches.config";
 import { downloadLinks } from "../data/downloads";
 import { LoginIcon } from "../icons/LoginIcon";
 import { SpLogo } from "../svg/SpLogo";
@@ -15,10 +16,15 @@ export const NavBar = () => {
     setMobileNavShow((prev) => !prev);
   };
 
+  const handleNavBlur = () => {
+    if (!mobileNavShow) return
+    setMobileNavShow(false);
+  };
+
   return (
     <MainHeader>
       <NavWrapper>
-        <Link href="/">
+        <Link href="/" onClick={handleNavBlur}>
           <SpLogo height={50}></SpLogo>
         </Link>
         {isMobile ? (
@@ -27,21 +33,21 @@ export const NavBar = () => {
               <ToggleBar open={mobileNavShow} />
             </MobileNavToggle>
             <MobileNavList open={mobileNavShow}>
-              <NavItem>
+              <NavItem onClick={handleShowNav}>
                 <Link href="">Docs</Link>
               </NavItem>
-              <NavItem>
+              <NavItem onClick={handleShowNav}>
                 <Link href="/blog">Blog</Link>
               </NavItem>
-              <NavItem>
+              <NavItem onClick={handleShowNav}>
                 <Link href="/about">Team</Link>
               </NavItem>
-              <NavItem>
+              <NavItem onClick={handleShowNav}>
                 <Link href="/pricing">Pricing</Link>
               </NavItem>
-              <NavItem>
+              <NavItem onClick={handleShowNav}>
                 <Link href="/download">Download</Link>
-                <NavItemList>
+                <NavItemList onClick={handleShowNav}>
                   {downloadLinks.map((item, i) => {
                     const Icon = item.icon;
                     return (
@@ -237,16 +243,33 @@ const ToggleBar = styled("div", {
 
 const MobileNavList = styled("ul", {
   position: "absolute",
-  right: 0,
-  top: "$xxxl",
+  right: '-$l',
+  top: '-$l',
   display: "grid",
-  gap: "$s",
+  gap: "$l",
+  padding: '$xxxl $l $l',
+  background: '$primaryGradient',
+  borderRadius: '$radS 0 0 $radS',
   textAlign: "right",
   fontSize: "$small",
+  zIndex: -1,
+  transformOrigin: 'top right',
   transition: "$medium",
   variants: {
     open: {
       false: { transform: "translateX(100%) scale(0)" },
     },
+  },
+
+  "&::after": {
+    content: "",
+    position: "absolute",
+    top: -2,
+    bottom: -2,
+    left: -2,
+    right: -2,
+    zIndex: -1,
+    boxShadow: `0px 0px 100px ${theme.colors.primary100}`,
+    opacity: 0.4,
   },
 });

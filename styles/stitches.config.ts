@@ -17,12 +17,16 @@ export const { styled, css, globalCss, theme } = createStitches({
       lighter100: "hsl(0,0%,65%)",
       light100: "hsl(0,0%,85%)",
       light200: "hsl(0,0%,100%)",
-      primary100: "hsl(249, 64%, 56%)",
-      primary200: "hsl(249, 96%, 57%)",
+      // primary100: "hsl(249, 64%, 56%)",
+      // primary200: "hsl(249, 96%, 57%)",
+      primary100: "hsl(77, 95%, 61%)",
+      primary200: "hsl(126, 74%, 69%)",
       accent100: "hsl(278, 52%, 45%)",
       accent200: "hsl(300, 90%, 49%)",
-      primaryGradient:
-        "linear-gradient(338deg, rgba(131,55,174,1) 0%, rgba(93,71,215,1) 100%)",
+      // primaryGradient:
+      //   "linear-gradient(338deg, rgba(131,55,174,1) 0%, rgba(93,71,215,1) 100%)",
+        primaryGradient:
+        "linear-gradient(338deg, hsl(126, 74%, 69%) 0%, hsl(77, 95%, 61%) 100%)",
       accentGradient:
         "linear-gradient(-338deg, hsl(77, 95%, 61%) 0%, hsl(126, 74%, 69%) 100%)",
       grayGradient:
@@ -76,8 +80,10 @@ export const { styled, css, globalCss, theme } = createStitches({
       radF: "999px",
     },
     shadows: {
-      bigPrimary: "0 0 20vw 15vw hsl(249, 64%, 56%)",
-      bigPrimary200: "0 0 20vw 15vw hsl(249, 96%, 57%)",
+      // bigPrimary: "0 0 20vw 15vw hsl(249, 64%, 56%)",
+      // bigPrimary200: "0 0 20vw 15vw hsl(249, 96%, 57%)",
+      bigPrimary: "0 0 20vw 15vw hsla(77, 95%, 61%, .5)",
+      bigPrimary200: "0 0 20vw 15vw hsla(126, 74%, 69%, .5)",
     },
     zIndices: {},
     transitions: {

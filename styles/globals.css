@@ -46,7 +46,6 @@ a {
   height: calc(var(--vh, 1vh) * 100);
   position: relative;
   display: grid;
-  /* justify-content: center; */
   overflow: hidden;
 }
 
@@ -54,9 +53,17 @@ main {
   width: 100%;
   min-height: 100vh;
   min-height: calc(var(--vh, 1vh) * 100);
-  overflow-y: overlay;
+  overflow-y: auto;
   overflow-x: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
+
 
 ul {
   list-style: none;

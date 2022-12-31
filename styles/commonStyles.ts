@@ -7,8 +7,6 @@ export const GradientSpan = styled("span", {
   WebkitTextFillColor: "transparent",
 });
 
-const smallButton = styled("div", {});
-
 export const PrimaryButton = styled("div", {
   width: "max-content",
   padding: "$s $l",
@@ -33,6 +31,7 @@ export const PrimaryButton = styled("div", {
 
   "&:hover": {
     background: "rgba(0,0,0,0)",
+    color: "$black",
   },
 
   variants: {

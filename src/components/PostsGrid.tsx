@@ -46,6 +46,7 @@ export const PostsGrid = ({ blogs }: Props) => {
                   <Date>{moment(blog.publishedAt).format("LL")}</Date>
                 </BottomLine>
               </Bottom>
+              <Mask />
             </BlogCard>
           );
         })}
@@ -105,6 +106,17 @@ const BlogCard = styled("div", {
       opacity: 0.5,
     },
   },
+});
+
+const Mask = styled("div", {
+  position: "absolute",
+  left: 0,
+  right: 0,
+  bottom: 0,
+  top: 0,
+  background: "$black",
+  borderRadius: "$radL",
+  zIndex: -1,
 });
 
 const Bottom = styled("div", {

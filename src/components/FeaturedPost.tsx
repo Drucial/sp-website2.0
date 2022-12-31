@@ -50,6 +50,7 @@ export const FeaturedPost = ({ blog }: Props) => {
             <Date>{moment(blog.publishedAt).format("LL")}</Date>
           </BottomLine>
         </Right>
+        <Mask />
       </Wrapper>
     </Section>
   );
@@ -100,6 +101,18 @@ const Wrapper = styled("div", {
     },
   },
 });
+
+const Mask = styled("div", {
+  position: "absolute",
+  left: 0,
+  right: 0,
+  bottom: 0,
+  top: 0,
+  background: "$black",
+  borderRadius: "$radL",
+  zIndex: -1,
+});
+
 const Left = styled("div", {});
 const Right = styled("div", {
   display: "flex",
@@ -109,7 +122,7 @@ const Right = styled("div", {
 });
 const Category = styled("p", {
   textTransform: "uppercase",
-  opacity: .6
+  opacity: 0.6,
 });
 const Title = styled("h2", {
   fontSize: "clamp($h2, 5vw, $extraLarge)",
@@ -118,7 +131,7 @@ const Title = styled("h2", {
 const Subtitle = styled("h3", {
   fontSize: "clamp($h4, 3vw, $large)",
   marginTop: "$xl",
-  opacity: 1
+  opacity: 1,
 });
 const BottomLine = styled("p", {
   marginTop: "$xl",
