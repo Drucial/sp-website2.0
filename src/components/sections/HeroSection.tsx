@@ -58,7 +58,7 @@ const Section = styled("section", {
     zIndex: -1,
     borderRadius: 150,
     boxShadow: "$bigPrimary",
-    opacity: 0.5,
+    opacity: 0.3,
   },
   "&::before": {
     content: "",

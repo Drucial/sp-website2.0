@@ -50,7 +50,7 @@ const AppWrapper = styled("div", {
     right: -2,
     borderRadius: 10,
     boxShadow: `0px 0px 100px ${theme.colors.primary100}`,
-    opacity: 0.4,
+    opacity: 0.25,
   },
 });
 

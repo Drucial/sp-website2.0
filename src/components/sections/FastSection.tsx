@@ -164,7 +164,7 @@ const GifBorder = styled("div", {
     left: -2,
     right: -2,
     boxShadow: `0px 0px 100px ${theme.colors.primary100}`,
-    opacity: 0.4,
+    opacity: 0.25,
   },
 });
 

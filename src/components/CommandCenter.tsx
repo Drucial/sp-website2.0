@@ -55,7 +55,7 @@ const OuterWrapper = styled("div", {
     right: -2,
     boxShadow: `0px 0px 100px ${theme.colors.primary100}`,
     borderRadius: 10,
-    opacity: 0.4,
+    opacity: 0.2,
   },
 });
 const Wrapper = styled("div", {

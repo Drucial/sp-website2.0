@@ -103,7 +103,7 @@ const BlogCard = styled("div", {
       opacity: 1,
     },
     "&::after": {
-      opacity: 0.5,
+      opacity: 0.25,
     },
   },
 });
