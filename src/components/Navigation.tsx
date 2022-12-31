@@ -39,26 +39,34 @@ export const Navigation = () => {
           </MobileNavToggle>
           <MobileNavList open={mobileNavShow}>
             {links.map((item, i) => (
-              <Link key={i} href={item.href} onClick={handleShowNav}>
-                <NavItem>{item.name}</NavItem>
-              </Link>
+              <NavItem key={i}>
+                <Link href={item.href} onClick={handleShowNav}>
+                  {item.name}
+                </Link>
+              </NavItem>
             ))}
-            <Link href="" onClick={handleShowNav}>
-              <NavItem>Download</NavItem>
-            </Link>
+            <NavItem>
+              <Link href="" onClick={handleShowNav}>
+                Download
+              </Link>
+            </NavItem>
           </MobileNavList>
         </MobileNav>
       ) : (
         <MainNav>
           <NavList>
             {links.map((item, i) => (
-              <Link key={i} href={item.href} onClick={handleShowNav}>
-                <NavItem>{item.name}</NavItem>
-              </Link>
+              <NavItem key={i}>
+                <Link href={item.href} onClick={handleShowNav}>
+                  {item.name}
+                </Link>
+              </NavItem>
             ))}
-            <Link href="" onClick={handleShowNav}>
-              <NavItem>Download</NavItem>
-            </Link>
+            <NavItem>
+              <Link href="" onClick={handleShowNav}>
+                Download
+              </Link>
+            </NavItem>
           </NavList>
         </MainNav>
       )}
