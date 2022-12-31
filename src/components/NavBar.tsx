@@ -1,11 +1,8 @@
 import { styled } from "@stitches/react";
 import Link from "next/link";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { IsMobileState, MobileNavShowState } from "../../state/atoms";
+import { useRecoilState } from "recoil";
+import { MobileNavShowState } from "../../state/atoms";
 import { MAX_WIDTH, NAV_HEIGHT } from "../../styles/constants";
-import { theme } from "../../styles/stitches.config";
-import { downloadLinks } from "../data/downloads";
-import { LoginIcon } from "../icons/LoginIcon";
 import { SpLogo } from "../svg/SpLogo";
 import { Navigation } from "./Navigation";
 
@@ -13,7 +10,7 @@ export const NavBar = () => {
   const [mobileNavShow, setMobileNavShow] = useRecoilState(MobileNavShowState);
 
   const handleNavBlur = () => {
-    if (!mobileNavShow) return
+    if (!mobileNavShow) return;
     setMobileNavShow(false);
   };
 

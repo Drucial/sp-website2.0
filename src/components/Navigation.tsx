@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { IsMobileState, MobileNavShowState } from "../../state/atoms";
 import { theme } from "../../styles/stitches.config";
+import { downloadLinks } from "../data/downloads";
 
 const links = [
   {
@@ -49,6 +50,18 @@ export const Navigation = () => {
               <Link href="" onClick={handleShowNav}>
                 Download
               </Link>
+              <NavItemList>
+                {downloadLinks.map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <li key={i}>
+                      <Link href={item.link}>
+                        <Icon /> {item.version} {item.os}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </NavItemList>
             </NavItem>
           </MobileNavList>
         </MobileNav>
@@ -66,6 +79,18 @@ export const Navigation = () => {
               <Link href="" onClick={handleShowNav}>
                 Download
               </Link>
+              <NavItemList>
+                {downloadLinks.map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <li key={i}>
+                      <Link href={item.link}>
+                        <Icon /> {item.version} {item.os}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </NavItemList>
             </NavItem>
           </NavList>
         </MainNav>
