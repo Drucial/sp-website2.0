@@ -8,6 +8,7 @@ import { TitleSection } from "../src/components/sections/TitleSection";
 import { FastSection } from "../src/components/sections/FastSection";
 import { DownloadSection } from "../src/components/sections/DownloadSection";
 import { KeyboardSection } from "../src/components/sections/KeyboardSection";
+import { BottomCtaSection } from "../src/components/sections/BottomCtaSection";
 
 export default function Home() {
   const isMobile = useRecoilValue(IsMobileState);
@@ -34,6 +35,7 @@ export default function Home() {
       <TestimonialSection />
       <FastSection />
       <KeyboardSection />
+      <BottomCtaSection />
     </Layout>
   );
 }

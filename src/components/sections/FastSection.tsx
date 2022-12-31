@@ -188,7 +188,8 @@ const Content = styled("div", {
 });
 
 const Tag = styled("p", {
-  fontWeight: "$1",
+  fontWeight: "$2",
+  color: '$lighter100',
   marginBottom: "$s",
 });
 
@@ -198,4 +199,5 @@ const Heading = styled("h3", {
 
 const Description = styled("p", {
   maxWidth: "35ch",
+  color: '$light100'
 });

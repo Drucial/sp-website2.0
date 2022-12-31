@@ -120,5 +120,5 @@ const DownloadWrapper = styled("div", {
 const MainDownload = styled("div", {});
 const AlternateDownloads = styled("p", {
   textAlign: "center",
-  color: "$light100",
+  color: "$lighter100",
 });
