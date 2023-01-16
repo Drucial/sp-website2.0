@@ -28,7 +28,7 @@ export const Downloader = () => {
   useEffect(() => {
     getOS();
     setDownloadLinks();
-  }, []);
+  });
 
   const getOS = () => {
     const userAgent = window.navigator.userAgent;
