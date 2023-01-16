@@ -352,7 +352,6 @@ export const TinyApp = ({ height }: IProps) => {
             />
           </filter>
         </defs>
-      </svg>
     </SvgGraphic>
   );
 };
