@@ -5,7 +5,11 @@ import Layout from "../src/components/Layout";
 export default function About() {
   return (
     <Layout>
-      <Head></Head>
+      <Head>
+        <title>About</title>
+        <meta name="description" content="Notes Reimagined" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <MainSection>
         <h1>About</h1>
       </MainSection>
