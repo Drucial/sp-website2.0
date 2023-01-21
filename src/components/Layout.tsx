@@ -1,28 +1,34 @@
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import {
   DESKTOP_WIDTH,
   MOBILE_WIDTH,
   TABLET_WIDTH,
 } from "../../styles/constants";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   IsDesktopState,
   IsMobileState,
   IsTabletState,
+  MobileNavShowState,
 } from "../../state/atoms";
 import { motion } from "framer-motion";
+import { styled } from "@stitches/react";
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function Layout({ children }: Props): JSX.Element {
   const setIsMobile = useSetRecoilState(IsMobileState);
   const setIsTablet = useSetRecoilState(IsTabletState);
   const setIsDesktop = useSetRecoilState(IsDesktopState);
+  const [mobileNavShow, setMobileNavShow] = useRecoilState(MobileNavShowState);
 
   const updateIsMobile = () => {
     window.innerWidth <= MOBILE_WIDTH ? setIsMobile(true) : setIsMobile(false);
+    if (window.innerWidth > MOBILE_WIDTH && mobileNavShow) {
+      setMobileNavShow(false);
+    }
   };
 
   const updateIsTablet = () => {
@@ -54,7 +60,7 @@ export default function Layout({ children }: Props): JSX.Element {
     updateIsMobile();
     updateIsTablet();
     updateIsDesktop();
-    setViewportHeight()
+    setViewportHeight();
   });
 
   const setViewportHeight = () => {
@@ -77,14 +83,26 @@ export default function Layout({ children }: Props): JSX.Element {
   };
 
   return (
-    <motion.main
+    <Main
+      navShow={mobileNavShow}
       initial="hidden"
       animate="enter"
       exit="exit"
       variants={variants}
-      transition={{ delay: 0 }}
+      // transition={{ delay: 0 }}
     >
       {children}
-    </motion.main>
+    </Main>
   );
 }
+
+const Main = styled(motion.main, {
+  transition: "$medium",
+  variants: {
+    navShow: {
+      true: {
+        transform: "translateX(-120px) !important",
+      },
+    },
+  },
+});

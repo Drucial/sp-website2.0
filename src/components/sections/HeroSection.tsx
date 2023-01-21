@@ -9,6 +9,7 @@ export const HeroSection = () => {
     <Section mobile={isMobile}>
       {isMobile ? (
         <Image
+          priority
           alt="Stashpad for Mac OS"
           src="/img/home/phones.png"
           width={699}

@@ -11,21 +11,21 @@ export const TinyApp = ({ height }: IProps) => {
       fill="none"
       style={{ height: height, display: "block" }}
     >
-      <g clip-path="url(#a)">
+      <g clipPath="url(#a)">
         <rect
           width="300"
           height="238"
           fill="#1A2023"
-          fill-opacity=".9"
+          fillOpacity=".9"
           rx="10"
         />
-        <g clip-path="url(#b)">
+        <g clipPath="url(#b)">
           <path
             fill="#0F1214"
             d="M4 12c0-4.4183 3.5817-8 8-8h276c4.418 0 8 3.5817 8 8v125H4V12Z"
           />
           <g filter="url(#c)">
-            <g clip-path="url(#d)">
+            <g clipPath="url(#d)">
               <rect
                 width="264"
                 height="34"
@@ -107,22 +107,22 @@ export const TinyApp = ({ height }: IProps) => {
           />
           <rect width="46" height="22" x="14" y="202" fill="#15181E" rx="11" />
           <rect width="22" height="22" x="14" y="202" fill="#B4E85F" rx="11" />
-          <g clip-path="url(#j)">
+          <g clipPath="url(#j)">
             <path
               fill="#0F1214"
               d="M17.7692 213.424c-.3589-.168-.3589-.679 0-.848l6.6682-3.138a.9374.9374 0 0 1 .7984 0l6.6683 3.138c.3589.169.3589.68 0 .848l-6.6683 3.138a.9374.9374 0 0 1-.7984 0l-6.6682-3.138Z"
             />
           </g>
-          <g clip-path="url(#k)">
+          <g clipPath="url(#k)">
             <path
               fill="#6F7780"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M42.3483 210.753c-.3378-.159-.3378-.64 0-.799l6.276-2.953a.8822.8822 0 0 1 .7514 0l6.276 2.953c.3378.159.3378.64 0 .799l-6.276 2.953a.8822.8822 0 0 1-.7514 0l-6.276-2.953Zm1.0267 1.365-1.0271.483c-.3378.159-.3378.64 0 .798l6.2764 2.954a.8822.8822 0 0 0 .7514 0l6.2764-2.954c.3378-.158.3378-.639 0-.798l-1.0271-.483-5.2493 2.47a.8751.8751 0 0 1-.7514 0l-5.2493-2.47Zm-1.0271 3.13 1.0267-.483 5.2493 2.47c.238.112.5135.112.7514 0l5.2493-2.47 1.0268.483c.3377.159.3377.64 0 .799L49.3753 219a.8822.8822 0 0 1-.7514 0l-6.276-2.953c-.3378-.159-.3378-.64 0-.799Z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </g>
           <rect width="22" height="22" x="64" y="202" fill="#15181E" rx="11" />
-          <g fill="#6F7780" clip-path="url(#l)">
+          <g fill="#6F7780" clipPath="url(#l)">
             <path d="M77.5 216.75h-1.875v-1.875h-1.25v1.875H72.5l2.5 2.5 2.5-2.5Zm-5-8.375h1.875v1.875h1.25v-1.875H77.5l-2.5-2.5-2.5 2.5ZM70 213h10v1.25H70V213Zm0-2h10v1.25H70V211Z" />
           </g>
           <rect width="22" height="22" x="90" y="202" fill="#15181E" rx="11" />
@@ -138,24 +138,24 @@ export const TinyApp = ({ height }: IProps) => {
             fill="#15181E"
             rx="4"
           />
-          <g clip-path="url(#m)">
+          <g clipPath="url(#m)">
             <path
               fill="#6F7780"
               stroke="#6F7780"
-              stroke-width=".3"
+              strokeWidth=".3"
               d="M232.464 216.094a.649.649 0 0 1-.748-.16.6502.6502 0 0 1-.077-.761l.825.921Zm0 0 13.5-6a.6491.6491 0 0 0 .386-.594c0-.257-.151-.49-.386-.594l-13.5-6a.649.649 0 0 0-.748.16.6516.6516 0 0 0-.077.762l3.309 5.672-3.309 5.673.825.921Zm7.736-7.144h-4.068l-2.356-4.038L244.1 209.5l-10.324 4.588 2.356-4.038h4.068c.304 0 .55-.246.55-.55 0-.304-.246-.55-.55-.55Z"
             />
           </g>
           <path
             fill="#6F7780"
-            fill-opacity=".66"
+            fillOpacity=".66"
             d="M258.1 200v19h2v-19h-2Z"
             mask="url(#path-36-inside-1_2_8368)"
           />
           <path
             fill="#6F7780"
             stroke="#6F7780"
-            stroke-width=".3"
+            strokeWidth=".3"
             d="M269.126 207.576a.5981.5981 0 0 0 0 .848l3 3a.597.597 0 0 0 .424.176.597.597 0 0 0 .424-.176l3-3a.5981.5981 0 0 0 0-.848.5981.5981 0 0 0-.848 0l-2.576 2.575-2.576-2.575a.5981.5981 0 0 0-.848 0Z"
           />
           <rect
@@ -164,7 +164,7 @@ export const TinyApp = ({ height }: IProps) => {
             x="4.5"
             y="137.5"
             stroke="#55565E"
-            stroke-opacity=".5"
+            strokeOpacity=".5"
             rx="7.5"
           />
         </g>
@@ -203,10 +203,10 @@ export const TinyApp = ({ height }: IProps) => {
           height="167"
           x="-31"
           y="5"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
           filterUnits="userSpaceOnUse"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feGaussianBlur in="BackgroundImageFix" stdDeviation="17.5" />
           <feComposite
             in2="SourceAlpha"
@@ -225,10 +225,10 @@ export const TinyApp = ({ height }: IProps) => {
           height="42"
           x="14"
           y="45"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
           filterUnits="userSpaceOnUse"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             result="hardAlpha"
@@ -254,10 +254,10 @@ export const TinyApp = ({ height }: IProps) => {
           height="42"
           x="14"
           y="83"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
           filterUnits="userSpaceOnUse"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             result="hardAlpha"
@@ -283,10 +283,10 @@ export const TinyApp = ({ height }: IProps) => {
           height="106"
           x="-31"
           y="-31"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
           filterUnits="userSpaceOnUse"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feGaussianBlur in="BackgroundImageFix" stdDeviation="17.5" />
           <feComposite
             in2="SourceAlpha"
@@ -305,10 +305,10 @@ export const TinyApp = ({ height }: IProps) => {
           height="117"
           x="-6"
           y="127"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
           filterUnits="userSpaceOnUse"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             result="hardAlpha"

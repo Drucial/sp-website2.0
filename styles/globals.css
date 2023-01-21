@@ -1,15 +1,13 @@
 /* Noto Sans */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;700;900&display=swap");
 /* Inter Tight */
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;700;900&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;700;900&display=swap");
 
 html,
 body {
-	font-family: Noto-Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    overflow: hidden;
+  font-family: Noto-Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow: hidden;
 }
 
 *::-webkit-scrollbar {
@@ -28,17 +26,17 @@ body {
 
 a {
   color: inherit;
-	text-decoration: none;
+  text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
-	}
-	body {
+  }
+  body {
     color: white;
-		background: black;
-	}
+    background: black;
+  }
 }
 
 .app {
@@ -56,14 +54,19 @@ main {
   min-height: calc(var(--vh, 1vh) * 100);
   overflow-y: overlay;
   overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+main::-webkit-scrollbar {
+  display: none;
 }
 
 ul {
   list-style: none;
 }
 
-
-svg, img {
-  display: block
+svg,
+img {
+  display: block;
 }
-

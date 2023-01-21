@@ -7,6 +7,13 @@ import { downloadLinks } from "../data/downloads";
 import { LoginIcon } from "../icons/LoginIcon";
 import { SpLogo } from "../svg/SpLogo";
 
+const navigation = [
+  { name: "Docs", link: "" },
+  { name: "Blog", link: "/blog" },
+  { name: "Team", link: "/about" },
+  { name: "Pricing", link: "/pricing" },
+];
+
 export const NavBar = () => {
   const isMobile = useRecoilValue(IsMobileState);
   const [mobileNavShow, setMobileNavShow] = useRecoilState(MobileNavShowState);
@@ -14,6 +21,12 @@ export const NavBar = () => {
   const handleShowNav = () => {
     setMobileNavShow((prev) => !prev);
   };
+
+  const handleBlurNav = () => {
+    setMobileNavShow(false);
+  };
+
+  console.log(navigation);
 
   return (
     <MainHeader>
@@ -27,65 +40,55 @@ export const NavBar = () => {
               <ToggleBar open={mobileNavShow} />
             </MobileNavToggle>
             <MobileNavList open={mobileNavShow}>
-              <NavItem>
-                <Link href="">Docs</Link>
-              </NavItem>
-              <NavItem>
-                <Link href="/blog">Blog</Link>
-              </NavItem>
-              <NavItem>
-                <Link href="/about">Team</Link>
-              </NavItem>
-              <NavItem>
-                <Link href="/pricing">Pricing</Link>
-              </NavItem>
-              <NavItem>
-                <Link href="/download">Download</Link>
-                <NavItemList>
-                  {downloadLinks.map((item, i) => {
-                    const Icon = item.icon;
-                    return (
-                      <li key={i}>
-                        <Link href={item.link}>
-                          <Icon /> {item.version} {item.os}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </NavItemList>
-              </NavItem>
+              <>
+                {navigation.map((item, i) => (
+                  <NavItem key={i} onClick={handleBlurNav}>
+                    <Link href={item.link}>{item.name}</Link>
+                  </NavItem>
+                ))}
+                <NavItem onClick={handleBlurNav}>
+                  <Link href="">Download</Link>
+                  <NavItemList>
+                    {downloadLinks.map((item, i) => {
+                      const Icon = item.icon;
+                      return (
+                        <li key={i}>
+                          <Link href={item.link}>
+                            <Icon /> {item.version} {item.os}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </NavItemList>
+                </NavItem>
+              </>
             </MobileNavList>
           </MobileNav>
         ) : (
           <MainNav>
             <NavList>
-              <NavItem>
-                <Link href="">Docs</Link>
-              </NavItem>
-              <NavItem>
-                <Link href="/blog">Blog</Link>
-              </NavItem>
-              <NavItem>
-                <Link href="/about">Team</Link>
-              </NavItem>
-              <NavItem>
-                <Link href="/pricing">Pricing</Link>
-              </NavItem>
-              <NavItem>
-                <Link href="/download">Download</Link>
-                <NavItemList>
-                  {downloadLinks.map((item, i) => {
-                    const Icon = item.icon;
-                    return (
-                      <li key={i}>
-                        <Link href={item.link}>
-                          <Icon /> {item.version} {item.os}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </NavItemList>
-              </NavItem>
+              <>
+                {navigation.map((item, i) => (
+                  <NavItem key={i} onClick={handleBlurNav}>
+                    <Link href={item.link}>{item.name}</Link>
+                  </NavItem>
+                ))}
+                <NavItem onClick={handleBlurNav}>
+                  <Link href="">Download</Link>
+                  <NavItemList>
+                    {downloadLinks.map((item, i) => {
+                      const Icon = item.icon;
+                      return (
+                        <li key={i}>
+                          <Link href={item.link}>
+                            <Icon /> {item.version} {item.os}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </NavItemList>
+                </NavItem>
+              </>
             </NavList>
             <LoginWrapper>
               <LoginIcon />
@@ -237,11 +240,11 @@ const ToggleBar = styled("div", {
 
 const MobileNavList = styled("ul", {
   position: "absolute",
-  right: 0,
+  right: 20,
   top: "$xxxl",
   display: "grid",
   gap: "$s",
-  textAlign: "right",
+  // textAlign: "right",
   fontSize: "$small",
   transition: "$medium",
   variants: {

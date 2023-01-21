@@ -27,7 +27,7 @@ export const Downloader = () => {
 
   useEffect(() => {
     getOS();
-    setDownloadLinks();
+    // setDownloadLinks();
   });
 
   const getOS = () => {
@@ -62,13 +62,6 @@ export const Downloader = () => {
     setAltDownloads(altDownloadsArr);
   };
 
-  // const handleAnalyticsEvent = () => {
-  //   // window.fathom.trackGoal("O2GUMWOC", 0)
-  //   // analytics.track("Clicked Download", {
-  //   // 	route: router.asPath,
-  //   // })
-  // };
-
   const handleDownload = (link: string) => {
     router.push(link);
   };
@@ -78,7 +71,6 @@ export const Downloader = () => {
       <PrimaryButton
         large
         onClick={() => {
-          // handleAnalyticsEvent();
           handleDownload(primaryDownload.link);
         }}
       >
@@ -93,7 +85,7 @@ export const Downloader = () => {
         Also available for{" "}
         {altDownloads.map((item, i) => (
           <span key={i}>
-            <Link href={item.link}>{`${item.version} ${item.os}`}</Link>
+            <Link href={''}>{`${item.version} ${item.os}`}</Link>
             {item.os === "Windows" ? ", and" : item.os === "Linux" ? "" : ", "}
           </span>
         ))}
