@@ -1,5 +1,5 @@
 import { styled } from "@stitches/react";
-import { Posts } from "../../typings";
+import { Post } from "../../typings";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import client from "../../client";
@@ -11,11 +11,10 @@ function urlFor(source: {}) {
 }
 
 type Props = {
-  blogs: [Posts];
+  blogs: Post[];
 };
 
 export const PostsGrid = ({ blogs }: Props) => {
-  console.log(blogs[0]);
   return (
     <Section>
       <PostGrid>

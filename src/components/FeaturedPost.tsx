@@ -2,7 +2,7 @@ import { styled } from "@stitches/react";
 import client from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
-import { Posts } from "../../typings";
+import { Post } from "../../typings";
 import moment from "moment";
 import { theme } from "../../styles/stitches.config";
 
@@ -11,7 +11,7 @@ function urlFor(source: {}) {
 }
 
 type Props = {
-  blog: Posts;
+  blog: Post;
 };
 
 export const FeaturedPost = ({ blog }: Props) => {
@@ -21,7 +21,7 @@ export const FeaturedPost = ({ blog }: Props) => {
     .fit("max")
     .auto("format")
     .url();
-  console.log(blog);
+
   return (
     <Section>
       <Wrapper>

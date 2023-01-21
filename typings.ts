@@ -1,4 +1,4 @@
-export interface Posts {
+export type Post = {
   _id: string;
   _createdAt: string;
   slug: {
