@@ -89,7 +89,7 @@ export default function Layout({ children }: Props): JSX.Element {
       animate="enter"
       exit="exit"
       variants={variants}
-      // transition={{ delay: 0 }}
+      transition={{ delay: 0 }}
     >
       {children}
     </Main>

@@ -5,6 +5,8 @@ import imageUrlBuilder from "@sanity/image-url";
 import client from "../../client";
 import moment from "moment";
 import { theme } from "../../styles/stitches.config";
+import { useRecoilValue } from "recoil";
+import { IsMobileState } from "../../state/atoms";
 
 function urlFor(source: {}) {
   return imageUrlBuilder(client).image(source);
@@ -15,9 +17,10 @@ type Props = {
 };
 
 export const PostsGrid = ({ blogs }: Props) => {
+  const isMobile = useRecoilValue(IsMobileState)
   return (
     <Section>
-      <PostGrid>
+      <PostGrid mobile={isMobile}>
         {blogs.map((blog, i) => {
           const image = urlFor(blog.mainImage)
             .height(400)
@@ -61,6 +64,14 @@ const PostGrid = styled("div", {
   maxWidth: 1000,
   paddingTop: '$xxxl',
   margin: "$xxxl auto",
+
+  variants: {
+    mobile: {
+      true: {
+        paddingTop: 0,
+      }
+    }
+  }
 });
 
 const BlogCard = styled("div", {
@@ -69,6 +80,7 @@ const BlogCard = styled("div", {
   background: '$black',
   cursor: "pointer",
   position: "relative",
+  transform: "scale(.95)",
 
   "&::before": {
     content: "",
@@ -96,7 +108,7 @@ const BlogCard = styled("div", {
   },
 
   "&:hover": {
-    transform: "scale(1.05)",
+    transform: "scale(1)",
     "&::before": {
       opacity: 1,
     },

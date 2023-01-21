@@ -64,6 +64,7 @@ const Wrapper = styled("div", {
   background: "$black",
   cursor: "pointer",
   position: "relative",
+  transform: "scale(.95)",
 
   "&::before": {
     content: "",
@@ -91,7 +92,7 @@ const Wrapper = styled("div", {
   },
 
   "&:hover": {
-    transform: "scale(1.05)",
+    transform: "scale(1)",
     "&::before": {
       opacity: 1,
     },
