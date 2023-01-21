@@ -8,7 +8,7 @@ import { useState } from "react"
 import { useRecoilValue } from "recoil"
 import client from "../../client"
 import { IsMobileState } from "../../state/atoms"
-import { Posts } from '../../typings'
+import { Post } from '../../typings'
 
 // function urlFor(source: string) {
 // 	return imageUrlBuilder(client).image(source)
