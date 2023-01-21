@@ -10,9 +10,9 @@ import client from "../../client"
 import { IsMobileState } from "../../state/atoms"
 import { Post } from '../../typings'
 
-// function urlFor(source: string) {
-// 	return imageUrlBuilder(client).image(source)
-// }
+function urlFor(source: string) {
+	return imageUrlBuilder(client).image(source)
+}
 
 // const ptComponents = {
 // 	types: {
@@ -37,7 +37,7 @@ import { Post } from '../../typings'
 // }
 
 interface Props {
-  post: Posts;
+  post: Post;
 }
 
 const Post = () => {
