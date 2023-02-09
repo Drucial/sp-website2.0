@@ -26,8 +26,6 @@ export const NavBar = () => {
     setMobileNavShow(false);
   };
 
-  console.log(navigation);
-
   return (
     <MainHeader>
       <NavWrapper>

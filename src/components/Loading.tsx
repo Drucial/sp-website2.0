@@ -2,7 +2,6 @@ import { keyframes, styled } from "@stitches/react";
 
 export const Loading = () => {
   const boxes = [...Array(10)];
-  console.log(boxes);
   return (
     <FullHeightSection>
       <Container>

@@ -18,6 +18,7 @@ export const FastSection = () => {
               <Image
                 alt="Stashpad focus command"
                 src="/gif/fast/focus.gif"
+                unoptimized
                 width={1000}
                 height={749}
               />
