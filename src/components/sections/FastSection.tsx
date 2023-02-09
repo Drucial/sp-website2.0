@@ -10,7 +10,10 @@ export const FastSection = () => {
 
   return (
     <Section>
-      <Title>The fastest notes <br/><GradientSpan>experience</GradientSpan></Title>
+      <Title>
+        The fastest notes <br />
+        <GradientSpan>experience</GradientSpan>
+      </Title>
       <FeatureWrapper>
         <Feature stack={isTablet}>
           <Gif stack={isTablet}>
@@ -47,6 +50,7 @@ export const FastSection = () => {
               <Image
                 alt="Stashpad focus command"
                 src="/gif/fast/actions.gif"
+                unoptimized
                 width={1000}
                 height={749}
               />
@@ -57,6 +61,7 @@ export const FastSection = () => {
           <Gif stack={isTablet}>
             <GifBorder>
               <Image
+                unoptimized
                 alt="Stashpad focus command"
                 src="/gif/fast/sticky.gif"
                 width={1000}
@@ -84,7 +89,7 @@ const Section = styled("section", {
 
 const Title = styled("h2", {
   fontSize: "clamp($h2, 5vw, $extraLarge)",
-  fontWeight: '$6',
+  fontWeight: "$6",
   textAlign: "center",
   marginBottom: "$xxxl",
 });
@@ -190,7 +195,7 @@ const Content = styled("div", {
 
 const Tag = styled("p", {
   fontWeight: "$2",
-  color: '$lighter100',
+  color: "$lighter100",
   marginBottom: "$s",
 });
 
@@ -200,5 +205,5 @@ const Heading = styled("h3", {
 
 const Description = styled("p", {
   maxWidth: "35ch",
-  color: '$light100'
+  color: "$light100",
 });
